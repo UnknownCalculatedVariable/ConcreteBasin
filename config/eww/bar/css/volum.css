@@ -1,0 +1,13 @@
+.volume-icon{
+   background-color: @color0;
+            color: @foreground ;
+  	font-size: 25px;
+	margin: .2rem 0 .2rem 0;
+}
+
+.volbar{
+  background-color: @color0;
+            color: @color2 ;
+  min-height: 100px;
+  min-width: 10px;
+  }

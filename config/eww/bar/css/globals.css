@@ -1,0 +1,17 @@
+* {
+    font-family: JetBrainsMono Nerd Font Propo;
+} 
+
+
+
+.side {
+	background-color: @color0;
+	color: #e20e3e;  
+
+}
+
+.ssC {
+    background-color: transparent;
+            color: @foreground;
+            
+}

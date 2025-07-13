@@ -1,0 +1,102 @@
+configuration {
+    show-icons: true;
+    icon-theme: "Papirus";
+    font: "Fira Code 12";
+    drun-display-format: "{icon} {name}";
+    disable-history: false;
+}
+
+* {
+    background-color: transparent;
+    text-color: #e5e9f0;
+}
+
+window {
+    width: 500;
+    location: center;
+    anchor: center;
+    transparency: "real";
+    background-color: #2e3440dd;
+    border-color: #81a1c1;
+    border-radius: 12px;
+    border-width: 2px;
+    padding: 0;
+}
+
+mainbox {
+    spacing: 0;
+    children: [ profile-section, separator, listview ];
+}
+
+profile-section {
+    orientation: horizontal;
+    children: [ profile-picture, profile-name ];
+    background-color: #3b4252;
+    border-radius: 10px 10px 0 0;
+    padding: 15px;
+}
+
+profile-picture {
+    background-image: url("$profile-pic", height);
+    background-size: 64px;
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+    margin: 0 15px 0 0;
+}
+
+profile-name {
+    font: "Fira Code Bold 14";
+    vertical-align: 0.5;
+}
+
+separator {
+    background-color: #4c566a;
+    height: 1px;
+}
+
+listview {
+    spacing: 5px;
+    padding: 10px;
+    dynamic: true;
+    scrollbar: false;
+}
+
+element {
+    padding: 8px 12px;
+    text-color: #d8dee9;
+    background-color: #3b4252;
+    border-radius: 6px;
+}
+
+element selected {
+    text-color: #2e3440;
+    background-color: #81a1c1;
+}
+
+element-text {
+    highlight: none;
+}
+
+element-icon {
+    size: 24px;
+}
+
+entry {
+    padding: 8px;
+    background-color: #3b4252;
+    text-color: #eceff4;
+}
+
+prompt {
+    padding: 8px;
+    background-color: #3b4252;
+    text-color: #81a1c1;
+    border-radius: 6px;
+}
+
+message {
+    padding: 8px;
+    background-color: #3b4252;
+    text-color: #eceff4;
+}

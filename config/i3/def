@@ -1,0 +1,8 @@
+#!/bin/bash
+
+swww img $HOME/Pictures/Wallpapers/Main.png &
+
+wal -i $HOME/Pictures/Wallpapers/Main.png &
+
+eww open clock
+eww open side

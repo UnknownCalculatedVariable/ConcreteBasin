@@ -1,0 +1,112 @@
+
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+* {
+    /* Text colors */
+    text-color: @foreground;
+    prompt-color: @color1;
+    placeholder-color: @color8;
+    
+    /* Background colors */
+    background-color: @background;
+    background-color-alt: @color0;
+    
+    /* Border and highlight colors */
+    border-color: @color2;
+    selected-normal-background: @color2;
+    selected-normal-foreground: @background;
+    selected-active-background: @color4;
+    selected-active-foreground: @background;
+    selected-urgent-background: @color1;
+    selected-urgent-foreground: @background;
+    
+    /* Spacing and sizing */
+    spacing: 0;
+    margin: 0;
+    padding: 8px;
+    element-padding: 8px 16px;
+    border-radius: 8px;
+    border-width: 2px;
+    
+    /* List view */
+    line-margin: 8px;
+    line-padding: 4px 8px;
+}
+
+#window {
+    transparency: "real";
+    location: center;
+    anchor: center;
+    fullscreen: false;
+    width: 640px;
+    x-offset: 0px;
+    y-offset: 0px;
+}
+
+#mainbox {
+    children: [prompt, listview, message];
+    spacing: 16px;
+}
+
+#prompt {
+    padding: 8px 16px;
+    border: 0 0 2px 0;
+    border-color: @color4;
+}
+
+#inputbar {
+    children: [prompt, entry];
+    spacing: 8px;
+}
+
+#listview {
+    fixed-height: false;
+    dynamic: true;
+    scrollbar: false;
+    spacing: 8px;
+    padding: 8px 0;
+}
+
+#element {
+    border: 1px;
+    border-radius: 4px;
+    padding: 8px 16px;
+}
+
+#element.normal.active {
+    text-color: @color4;
+    background-color: @color0;
+}
+
+#element.selected.normal {
+    background-color: @color2;
+    text-color: @background;
+}
+
+#element.selected.active {
+    background-color: @color4;
+    text-color: @background;
+}
+
+#element.alternate.normal {
+    background-color: @color0;
+}
+
+#element.alternate.active {
+    background-color: @color0;
+    text-color: @color4;
+}
+
+#element-icon {
+    size: 24px;
+}
+
+#element-text {
+    margin: 0 8px;
+}
+
+#message {
+    padding: 8px;
+    border: 2px 0 0 0;
+    border-color: @color1;
+}

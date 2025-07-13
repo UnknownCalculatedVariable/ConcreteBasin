@@ -1,0 +1,42 @@
+.workspaces {
+    padding-top: 8px;
+    color: @color0;
+    background-color: @color0;
+    border-radius: 12px;
+    margin: 0px 0;
+}
+
+.workspace {
+    font-size: 20px;
+    padding: 8px 12px;
+    margin: 0px 0;
+    border-radius: 8px;
+    color: black;
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+
+.workspace.empty {
+    background-color: @color0;
+    color: @color5;
+}
+
+.workspace.occupied {
+    color: @cursor;
+}
+
+.workspace.visible {
+    background-color: #1b213b;
+}
+
+.workspace.focused {
+    color: @color1;
+    background-color: @color0;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.workspace:hover {
+    background-color: #B83B5E;
+}

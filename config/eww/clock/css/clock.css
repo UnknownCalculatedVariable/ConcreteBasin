@@ -1,0 +1,13 @@
+.clock {
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+.time {
+    /*background-color: #02002f;*/
+    background-color: @color0;
+    color: @color1;
+    font-size: 35px;
+    font-family: JetBrainsMono Nerd Font;
+    padding-left: 30px;
+}

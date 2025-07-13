@@ -1,0 +1,132 @@
+#!/bin/bash
+
+# Configuration
+WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
+CACHE_FILE="$HOME/.cache/wallpaper_index.txt"
+ROFI_CONFIG="$HOME/.config/rofi/config.rasi"
+THUMBNAIL_DIR="$HOME/.cache/wallpaper-thumbs"
+THUMBNAIL_SIZE="200x200"
+GRID_ROWS=2
+GRID_COLS=4
+
+# Ensure dependencies are installed
+command -v convert >/dev/null || { notify-send "ImageMagick 'convert' is not installed."; exit 1; }
+command -v swww >/dev/null || { notify-send "swww is not installed."; exit 1; }
+
+# Create directories if they don't exist
+mkdir -p "$THUMBNAIL_DIR"
+
+# Function to generate or get square thumbnail path
+get_thumbnail() {
+    local wallpaper="$1"
+    local thumb_name="$(echo "$wallpaper" | md5sum | cut -d ' ' -f1).jpg"
+    local thumb_path="$THUMBNAIL_DIR/$thumb_name"
+
+    if [[ ! -f "$thumb_path" ]]; then
+        if [[ "$wallpaper" == *.gif ]]; then
+            convert "$wallpaper[0]" -thumbnail "${THUMBNAIL_SIZE}^" -gravity center -extent "$THUMBNAIL_SIZE" "$thumb_path"
+        else
+            convert "$wallpaper" -thumbnail "${THUMBNAIL_SIZE}^" -gravity center -extent "$THUMBNAIL_SIZE" "$thumb_path"
+        fi
+    fi
+
+    echo "$thumb_path"
+}
+
+# Function to show folder selection
+select_folder() {
+    declare -a folders=("All Wallpapers")
+    while IFS= read -r -d $'\0' folder; do
+        folders+=("$(basename "$folder")")
+    done < <(find "$WALLPAPER_DIR" -mindepth 1 -maxdepth 1 -type d -print0 | sort -z)
+
+    printf "%s\n" "${folders[@]}" | rofi \
+        -dmenu \
+        -p "󰉏 Wallpaper Folder" \
+        -config "$ROFI_CONFIG"
+}
+
+# Function to show wallpaper selection from a folder with thumbnails
+select_wallpaper() {
+    local folder="$1"
+    declare -a WALLPAPER_PATHS=()
+    declare -a ROFI_LINES=()
+
+    if [[ "$folder" == "All Wallpapers" ]]; then
+        mapfile -d '' -t WALLPAPER_PATHS < <(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | sort -z)
+    else
+        mapfile -d '' -t WALLPAPER_PATHS < <(find "$WALLPAPER_DIR/$folder" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | sort -z)
+    fi
+
+    CURRENT_INDEX=0
+    [[ -f "$CACHE_FILE" ]] && CURRENT_INDEX=$(<"$CACHE_FILE")
+
+    for i in "${!WALLPAPER_PATHS[@]}"; do
+        thumb=$(get_thumbnail "${WALLPAPER_PATHS[$i]}")
+        ROFI_LINES+=("$i\x00icon\x1f$thumb")
+    done
+
+    selected_index=$(printf "%b\n" "${ROFI_LINES[@]}" | rofi \
+        -dmenu \
+        -selected-row "$CURRENT_INDEX" \
+        -show-icons \
+        -theme-str 'entry { enabled: false; }' \
+        -theme-str 'listview { lines: '$GRID_ROWS'; columns: '$GRID_COLS'; }' \
+        -theme-str 'element { orientation: vertical; children: [ element-icon ]; }' \
+        -theme-str 'element-icon { size: 200px; border-radius: 5px; }' \
+        -kb-row-up "Up" \
+        -kb-row-down "Down" \
+        -kb-accept "Return" \
+        -p "󰉏 Wallpaper ($folder)" \
+        -config "$ROFI_CONFIG")
+
+    echo "$selected_index"
+}
+
+# Main execution
+SELECTED_FOLDER=$(select_folder)
+[[ -z "$SELECTED_FOLDER" ]] && exit 0
+
+SELECTED_INDEX=$(select_wallpaper "$SELECTED_FOLDER")
+[[ -z "$SELECTED_INDEX" ]] && exit 0
+
+# Get the wallpaper list again
+if [[ "$SELECTED_FOLDER" == "All Wallpapers" ]]; then
+    mapfile -d '' -t WALLPAPER_PATHS < <(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | sort -z)
+else
+    mapfile -d '' -t WALLPAPER_PATHS < <(find "$WALLPAPER_DIR/$SELECTED_FOLDER" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | sort -z)
+fi
+
+selected_wallpaper="${WALLPAPER_PATHS[$SELECTED_INDEX]}"
+[[ -z "$selected_wallpaper" ]] && echo "No wallpaper selected or index invalid" >&2 && exit 1
+
+# Apply the wallpaper
+if [[ -f "$selected_wallpaper" ]]; then
+    echo "$SELECTED_INDEX" > "$CACHE_FILE"
+
+    # Blazing fast transition options optimized for Sway
+    TRANSITION_OPTS=(
+        --transition-type simple
+        --transition-fps 144
+        --transition-duration 0.5
+        --transition-step 255
+        --transition-bezier 0.1,0.8,0.1,1
+    )
+
+    # Initialize swww if not running
+    if ! pgrep -x "swww-daemon" >/dev/null; then
+        swww init
+        sleep 0.1  # Minimal delay
+    fi
+    
+    # Apply wallpaper with optimized transitions
+    swww img "$selected_wallpaper" "${TRANSITION_OPTS[@]}"
+
+    # Lightweight notification
+    notify-send -t 1000 "Wallpaper" "$(basename "$selected_wallpaper")"
+
+    # Apply colors (async to avoid blocking)
+    	sleep 0.2
+    	( wal -i "$selected_wallpaper" >/dev/null 2>&1 ) &
+    	eww reload
+fi

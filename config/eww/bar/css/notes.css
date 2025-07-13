@@ -1,0 +1,23 @@
+.notes-icon {
+    color: @foreground;
+    font-size: 28px;
+    padding-top: 5px;
+}
+
+.notes-btn {
+    border-bottom-left-radius: 50px;
+    background-color: @color2;
+    font-size: xx-large;
+}
+
+.obsidian {
+        font-size: xx-large;
+    background-color: @color0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.vim {
+    background-color: @color0;
+    font-size: x-large;
+}

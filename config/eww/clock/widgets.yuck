@@ -1,0 +1,13 @@
+(defwidget time [] 
+(box :halign "center" 
+     :class "time" 
+     :space-evenly "false"
+(label 
+    :halign "center"
+    :text "${hour}  |  ")
+(label 
+    :halign "center"
+    :text "${minute}  |  ")
+(label 
+    :halign "center"
+    :text "${second}  ")))

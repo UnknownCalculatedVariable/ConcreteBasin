@@ -1,0 +1,168 @@
+/**
+ * Elegant Pywal Rofi Theme
+ * Automatically uses colors from ~/.cache/wal/colors-rofi-dark.rasi
+ */
+
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+* {
+    font: "JetBrainsMono Nerd Font 12";
+    border-radius: 8px;
+}
+
+#window {
+    background-color: @background;
+    padding: 20px;
+}
+
+#mainbox {
+    border: 0;
+    padding: 0;
+}
+
+#message {
+    border: 2px 0px 0px;
+    border-color: @border-color;
+    padding: 8px;
+    margin: 0px 0px 8px 0px;
+}
+
+#textbox {
+    text-color: @foreground;
+}
+
+#inputbar {
+    children: [ textbox-prompt-colon, entry, case-indicator ];
+    background-color: @background;
+    border: 0px 0px 2px 0px;
+    border-color: @selected-normal-background;
+    border-radius: 0;
+    padding: 0px 0px 10px 0px;
+    margin: 0px 0px 15px 0px;
+}
+
+#textbox-prompt-colon {
+    expand: false;
+    str: "  ";
+    margin: 0px 0.3em 0em 0em;
+    text-color: @selected-normal-background;
+}
+
+#prompt {
+    text-color: @selected-normal-background;
+    font: "JetBrainsMono Nerd Font Bold 12";
+}
+
+#entry {
+    spacing: 0;
+    text-color: @foreground;
+    placeholder: " ";
+    placeholder-color: @normal-foreground;
+}
+
+#case-indicator {
+    spacing: 0;
+    text-color: @selected-normal-background;
+}
+
+#listview {
+    fixed-height: 0;
+    border: 0;
+    spacing: 5px;
+    scrollbar: true;
+    padding: 5px 0px 0px;
+    lines: 12;
+}
+
+#element {
+    border: 0;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+#element-icon {
+    background-color: transparent;
+    size: 24px;
+    padding: 0px 10px 0px 0px;
+}
+
+#element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+#element.normal.normal {
+    background-color: @normal-background;
+    text-color: @normal-foreground;
+}
+
+#element.normal.urgent {
+    background-color: @urgent-background;
+    text-color: @urgent-foreground;
+}
+
+#element.normal.active {
+    background-color: @active-background;
+    text-color: @active-foreground;
+}
+
+#element.selected.normal {
+    background-color: @selected-normal-background;
+    text-color: @selected-normal-foreground;
+}
+
+#element.selected.urgent {
+    background-color: @selected-urgent-background;
+    text-color: @selected-urgent-foreground;
+}
+
+#element.selected.active {
+    background-color: @selected-active-background;
+    text-color: @selected-active-foreground;
+}
+
+#element.alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color: @alternate-normal-foreground;
+}
+
+#element.alternate.urgent {
+    background-color: @alternate-urgent-background;
+    text-color: @alternate-urgent-foreground;
+}
+
+#element.alternate.active {
+    background-color: @alternate-active-background;
+    text-color: @alternate-active-foreground;
+}
+
+#scrollbar {
+    width: 4px;
+    border: 0;
+    handle-color: @selected-normal-background;
+    handle-width: 8px;
+    padding: 0 4px;
+}
+
+#sidebar {
+    border: 2px 0px 0px;
+    border-color: @border-color;
+    border-radius: 0;
+}
+
+#button {
+    text-color: @normal-foreground;
+    padding: 8px;
+}
+
+#button.selected {
+    background-color: @selected-normal-background;
+    text-color: @selected-normal-foreground;
+}
+
+#mode-switcher {
+    border: 0px;
+    spacing: 10px;
+    padding: 10px 0 0 0;
+}

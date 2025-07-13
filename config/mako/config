@@ -1,0 +1,175 @@
+# Mako notification daemon configuration
+# Place this file at ~/.config/mako/config
+
+# Basic Settings
+max-history=100
+sort=-time
+
+# Positioning
+anchor=top-center
+margin=20
+padding=15
+
+# Dimensions
+width=400
+height=150
+max-visible=5
+
+# Colors - Dark theme with subtle accents
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#89b4fa
+progress-color=#89b4fa
+
+# Typography
+font=Inter 11
+markup=1
+format=<b>%s</b>\n%b
+
+# Border and corner styling
+border-size=2
+border-radius=12
+
+# Icons
+max-icon-size=48
+icon-path=/usr/share/icons/Papirus-Dark
+icons=1
+
+# Behavior
+ignore-timeout=0
+default-timeout=5000
+group-by=app-name
+
+# Animations and effects
+layer=overlay
+output=
+
+# Urgency-based styling
+[urgency=low]
+background-color=#1e1e2e
+text-color=#a6adc8
+border-color=#45475a
+default-timeout=3000
+
+[urgency=normal]
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#89b4fa
+default-timeout=5000
+
+[urgency=critical]
+background-color=#1e1e2e
+text-color=#f38ba8
+border-color=#f38ba8
+default-timeout=0
+
+# App-specific styling
+[app-name=Spotify]
+background-color=#191414
+text-color=#1db954
+border-color=#1db954
+
+[app-name=Discord]
+background-color=#36393f
+text-color=#dcddde
+border-color=#5865f2
+
+[app-name=Firefox]
+background-color=#0c0c0d
+text-color=#00ddff
+border-color=#ff6611
+
+[app-name=Volume]
+background-color=#1e1e2e
+text-color=#89b4fa
+border-color=#89b4fa
+format=<b>%s</b>
+
+[app-name=Brightness]
+background-color=#1e1e2e
+text-color=#f9e2af
+border-color=#f9e2af
+format=<b>%s</b>
+
+# Summary-based styling for system notifications
+[summary~="Battery"]
+background-color=#1e1e2e
+text-color=#f9e2af
+border-color=#f9e2af
+
+[summary~="Network"]
+background-color=#1e1e2e
+text-color=#a6e3a1
+border-color=#a6e3a1
+
+[summary~="Update"]
+background-color=#1e1e2e
+text-color=#89b4fa
+border-color=#89b4fa
+
+# Power management notifications
+[summary~="Power"]
+background-color=#1e1e2e
+text-color=#fab387
+border-color=#fab387
+
+# Screenshot notifications
+[summary~="Screenshot"]
+background-color=#1e1e2e
+text-color=#94e2d5
+border-color=#94e2d5
+
+# Email notifications
+[app-name=Thunderbird]
+background-color=#1e1e2e
+text-color=#89b4fa
+border-color=#89b4fa
+
+[app-name=Evolution]
+background-color=#1e1e2e
+text-color=#89b4fa
+border-color=#89b4fa
+
+# Chat applications
+[app-name=Telegram]
+background-color=#0088cc
+text-color=#ffffff
+border-color=#ffffff
+
+[app-name=Signal]
+background-color=#2090ea
+text-color=#ffffff
+border-color=#ffffff
+
+# Media players
+[app-name=mpv]
+background-color=#1e1e2e
+text-color=#cba6f7
+border-color=#cba6f7
+
+[app-name=VLC]
+background-color=#ff8800
+text-color=#ffffff
+border-color=#ffffff
+
+# Development tools
+[app-name=VS\ Code]
+background-color=#1e1e2e
+text-color=#007acc
+border-color=#007acc
+
+[app-name=Code]
+background-color=#1e1e2e
+text-color=#007acc
+border-color=#007acc
+
+# System monitoring
+[app-name=htop]
+background-color=#1e1e2e
+text-color=#a6e3a1
+border-color=#a6e3a1
+
+[app-name=btop]
+background-color=#1e1e2e
+text-color=#a6e3a1
+border-color=#a6e3a1

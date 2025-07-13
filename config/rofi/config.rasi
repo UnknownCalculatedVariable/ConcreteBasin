@@ -1,0 +1,17 @@
+configuration {
+    modi: "drun,run,window";
+    show-icons: false;
+    icon-theme: "Papirus";
+    font: "Fira Code 12";
+    terminal: "alacritty";
+    drun-display-format: "{icon} {name}";
+    sidebar-mode: false;
+    kb-row-up: "Up,Control+k";
+    kb-row-down: "Down,Control+j";
+    kb-accept-entry: "Return";
+    kb-remove-to-eol: "";
+    kb-mode-next: "Shift+Right";
+    kb-mode-previous: "Shift+Left";
+}
+
+@theme "wal.rasi"

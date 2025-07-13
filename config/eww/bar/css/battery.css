@@ -1,0 +1,19 @@
+.battery {
+      background-color: #19173C;
+      border-top-right-radius: 100px;
+    border-top-left-radius: 100px;
+}
+
+.battbtn {
+   background-color: @color0;
+            color: @foreground ;
+  	font-size: 25px;
+        border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.battery-info {
+    color: @foreground;
+    font-size: 14px;
+    padding: 5px;
+}

@@ -1,0 +1,145 @@
+;; This file defines the various widgets used in the Eww bar.
+
+;; Center Widget
+;; This widget is currently unused in the main bar, but could be used to center content.
+(defwidget center []
+  (box :orientation "v" :class "bottom" :space-evenly "false" :vexpand "false" :valign "center"
+    (vertical-clock)))
+
+;; Top Bar Widget
+;; Contains the notes and workspaces widgets.
+(defwidget top []
+  (box :orientation "v" :class "bottom" :space-evenly "false" :vexpand "false" :valign "start"
+    (notes)
+    (workspaces)))
+
+;; CPU Progress Widget
+;; Displays CPU usage as a circular progress bar.
+(defwidget cpc []
+  (box :orientation "v" :class "vertical-clock" :valign "center"
+    (circular-progress :value cpuV :thickness 15 :clockwise true)))
+
+;; Bottom Bar Widget
+;; Main container for all bottom bar widgets.
+(defwidget bottom []
+  (box :orientation "v" :class "bottom" :space-evenly "false" :vexpand "false" :valign "end"
+    (vertical-clock)
+    (battery)
+    (utils)
+    (brigM)
+      (music)
+    (volum)
+    (power)))
+
+;; Main Bar Widget
+;; The top-level container for the entire Eww bar.
+(defwidget bar []
+  (box :class "eww_bar" :orientation "v" :vexpand "false" :hexpand "false"
+    (top)
+    (bottom)))
+
+
+(defwidget battery []
+      (button :class "battbtn" :tooltip "${batteryP}" :onclick "notify-send ${batteryP}" "󰁹"))
+
+      (defwidget power []
+  (eventbox :onhover "eww update power=true" :onhoverlost "eww update power=false"
+    (box :orientation "v" :space-evenly "false" :vexpand "false" :class "power" :valign "end"
+      ;; Revealer for power options
+      (revealer :transition "slidedown" :reveal power :duration "700ms"
+        (box :orientation "v" :space-evenly "false"
+          ;; Sleep button
+          (button :class "buttonres" :tooltip "Sleep" :onclick "systemctl suspend" "󰤄")
+          ;; Logout button
+          (button :class "buttonoff" :tooltip "Logout" :onclick "swaymsg exit" "")
+          ;; Lock button
+          (button :class "buttonoff" :tooltip "Lock" :onclick "swaylock &" "")
+          ;; Restart button
+          (button :class "buttonres" :tooltip "Restart" :onclick "reboot" "")))
+      ;; Always-visible shutdown button
+      (button :class "shutbutton" :tooltip "Shutdown" :onclick "shutdown now" ""))))
+
+
+      (defwidget brigM []
+  (eventbox :onhover "eww update brigM=true" :onhoverlost "eww update brigM=false"
+    (box :orientation "v" :space-evenly "false" :spacing "0"
+      ;; Brightness slider revealer
+      (revealer :transition "slideup" :reveal brigM :duration "800ms"
+        (scale :class "volbar" :value "100" :orientation "v" :flipped true :tooltip "Brightness: ${current-brightness}" :max 100 :min 0 :onchange "brightnessctl set {}%"))
+      ;; Brightness icon button (always visible)
+      (label :class "volume-icon" :text "󰃠"))))
+
+      (defwidget notes []
+  (eventbox :onhover "eww update notes=true" :onhoverlost "eww update notes=false"
+    (box :orientation "v" :space-evenly "false" :spacing "0"
+      ;; Revealer for the notes buttons
+      (revealer :transition "slideup" :reveal notes :duration "800ms"
+        (box :orientation "v" :space-evenly "false"
+          ;; Obsidian button
+          (button :class "obsidian" :tooltip "Obsidian" :onclick "obsidian &" "◈")
+          ;; Vim button
+          (button :class "vim" :tooltip "Vim" :onclick "alacritty -e vim ~/Notes/ThinkDock &" "")))
+      ;; Notes icon button (always visible)
+      (label :class "notes-icon" :text "󱓶"))))
+
+
+      (defwidget utils []
+  (eventbox :onhover "eww update utils=true" :onhoverlost "eww update utils=false"
+    (box :orientation "v" :space-evenly "false" :vexpand "false" :class "utils" :valign "end"
+      ;; Utilities revealer
+      (revealer :transition "slideup" :reveal utils :duration "800ms"
+        (box :orientation "v" :space-evenly "false"
+          ;; Music Recognition button
+          (button :class "utbtn" :tooltip "Music Recognition" :onclick "flatpak run io.github.seadve.Mousai &" "󰁧")
+          ;; Night Mode button
+          (button :class "utbtn" :tooltip "Night Mode" :onclick "bar/scripts/gams.sh" "󰃜")
+          ;; Color Picker button
+          (button :class "utbtn" :tooltip "Color Picker" :onclick "bar/scripts/cp.sh" "")
+          ;; Screenshot button
+          (button :class "utbtn" :tooltip "Screenshot" :onclick "eww open --toggle ssC" "")))
+      ;; Always-visible utility button
+      (label :class "utilR" :text "󱁤"))))
+
+(defwidget music []
+  (eventbox :onhover "eww update music=true" :onhoverlost "eww update music=false"
+    (box :orientation "v" :space-evenly "false" :vexpand "false" :class "utils" :valign "end"
+      ;; Utilities revealer
+      (revealer :transition "slideup" :reveal music :duration "800ms"
+        (box :orientation "v" :space-evenly "false"
+          ;; Next button
+          (button :class "utbtn" :tooltip "Next" :onclick "playerctl next" "󰒭")
+          ;; Previous button
+          (button :class "utbtn" :tooltip "Previous" :onclick "playerctl previous" "󰒮")))
+      ;; Main player button with dynamic icon
+      (button :class "utilR" 
+              :tooltip "Pause/Play" 
+              :onclick "playerctl play-pause" "${play-icon}"
+              ))))
+
+
+       (defwidget vertical-clock []
+  (box :orientation "v" :class "vertical-clock" :valign "center"
+    (label :class "clock-hour" :text hour)
+    (label :class "clock-min" :text minute)))
+
+    (defwidget volum []
+  (eventbox :onhover "eww update volum=true" :onhoverlost "eww update volum=false"
+    (box :orientation "v" :space-evenly "false" :spacing "0"
+      ;; Volume slider revealer
+      (revealer :transition "slideup" :reveal volum :duration "800ms"
+        (scale :class "volbar" :value current-volume :orientation "v" :flipped true :tooltip "Volume: ${current-volume}%" :max 101 :min 0 :onchange "amixer sset Master {}%"))
+      ;; Volume icon button (always visible)
+      (label :class "volume-icon" :text "󰕾"))))
+
+      (defwidget workspaces []
+  (literal :content workspacesS))
+
+
+(defwidget ssCW []
+  (box :class "ssc"
+       :orientation "h"
+       :space-evenly true
+    (button :class "ssbtn" :tooltip "Area Screenshot" :onclick "eww close ssC && bar/scripts/ssS.sh" "󰆞")
+    (button :class "ssbtn" :tooltip "Full Screenshot" :onclick "eww close ssC && bar/scripts/ssF.sh" "󰹑")
+    (button :class "ssbtn" :tooltip "Close" :onclick "eww close ssC" "󰈆")))
+
