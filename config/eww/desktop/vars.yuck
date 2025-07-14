@@ -1,11 +1,12 @@
 (deflisten hour 
     :initial "" 
-    'clock/scripts/hour.sh' )
+    'desktop/scripts/hour.sh' )
 
 (deflisten minute 
     :initial "" 
-    'clock/scripts/minute.sh' )
+    'desktop/scripts/minute.sh' )
 
 (deflisten second 
     :initial "" 
-    'clock/scripts/second.sh' )
+    'desktop/scripts/second.sh' )
+

@@ -107,7 +107,7 @@
       (revealer :transition "slideup" :reveal music :duration "800ms"
         (box :orientation "v" :space-evenly "false"
           ;; Next button
-          (button :class "utbtn" :tooltip "Next" :onclick "playerctl next" "󰒭")
+          (button :class "utbtn" :tooltip "Next" :onclick "playerctl next && ./desktop/scripts/album.sh && eww reload" "󰒭")
           ;; Previous button
           (button :class "utbtn" :tooltip "Previous" :onclick "playerctl previous" "󰒮")))
       ;; Main player button with dynamic icon
@@ -142,4 +142,5 @@
     (button :class "ssbtn" :tooltip "Area Screenshot" :onclick "eww close ssC && bar/scripts/ssS.sh" "󰆞")
     (button :class "ssbtn" :tooltip "Full Screenshot" :onclick "eww close ssC && bar/scripts/ssF.sh" "󰹑")
     (button :class "ssbtn" :tooltip "Close" :onclick "eww close ssC" "󰈆")))
+
 

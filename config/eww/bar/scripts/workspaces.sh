@@ -10,7 +10,7 @@ workspaces() {
     local tree=$(swaymsg -t get_tree)
 
     # Start widget container
-    echo -n "(box :class \"workspaces\" :orientation \"v\" :space-evenly false :spacing 2"
+    echo -n "(box :class \"workspaces\" :orientation \"v\" :space-evenly false :spacing 4"
 
     for i in {1..5}; do
         # Check status

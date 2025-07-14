@@ -4,6 +4,7 @@ set $mod1 Mod1
 font pango:monospace 8
 
 exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id rm ~/ly-session.log 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 

@@ -5,9 +5,13 @@
 	margin: .2rem 0 .2rem 0;
 }
 
-.volbar{
+.volbar trough {
   background-color: @color0;
-            color: @color2 ;
+            color: pink ;
   min-height: 100px;
-  min-width: 10px;
+  min-width: 13px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   }
+
+
