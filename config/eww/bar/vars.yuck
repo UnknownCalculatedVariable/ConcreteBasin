@@ -14,14 +14,3 @@
 (deflisten cpuV :initial "" "bar/scripts/cpuF.sh")
 (deflisten workspacesS :initial "" "bar/scripts/workspaces.sh")
 (deflisten play-icon :initial "" "bar/scripts/play-stat.sh")
-(deflisten hour
-    :initial ""
-    'clock/scripts/hour.sh' )
-
-(deflisten minute
-    :initial ""
-    'clock/scripts/minute.sh' )
-
-(deflisten second
-    :initial ""
-    'clock/scripts/second.sh' )

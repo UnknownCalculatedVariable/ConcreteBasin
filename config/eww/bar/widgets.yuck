@@ -13,12 +13,6 @@
     (notes)
     (workspaces)))
 
-;; CPU Progress Widget
-;; Displays CPU usage as a circular progress bar.
-(defwidget cpc []
-  (box :orientation "v" :class "vertical-clock" :valign "center"
-    (circular-progress :value cpuV :thickness 15 :clockwise true)))
-
 ;; Bottom Bar Widget
 ;; Main container for all bottom bar widgets.
 (defwidget bottom []

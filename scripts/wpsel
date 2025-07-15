@@ -129,4 +129,6 @@ if [[ -f "$selected_wallpaper" ]]; then
     	sleep 0.2
     	( wal -i "$selected_wallpaper" >/dev/null 2>&1 ) &
     	eww reload
+	eww reload
+	eww reload
 fi
