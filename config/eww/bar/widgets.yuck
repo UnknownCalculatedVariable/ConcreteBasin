@@ -1,59 +1,93 @@
-;; This file defines the various widgets used in the Eww bar.
-
-;; Center Widget
-;; This widget is currently unused in the main bar, but could be used to center content.
 (defwidget center []
-  (box :orientation "v" :class "bottom" :space-evenly "false" :vexpand "false" :valign "center"
+  (box :orientation "v" 
+       :class "bottom" 
+       :space-evenly "false" 
+       :vexpand "false" 
+       :valign "center"
     (vertical-clock)))
 
-;; Top Bar Widget
-;; Contains the notes and workspaces widgets.
+;;; Top Bar Widget
+;; This widget is responsible for displaying the top section of the bar.
+;; It includes the notes and workspaces widgets.
 (defwidget top []
-  (box :orientation "v" :class "bottom" :space-evenly "false" :vexpand "false" :valign "start"
+  (box :orientation "v" 
+       :class "bottom" 
+       :space-evenly "false" 
+       :vexpand "false" 
+       :valign "start"
     (notes)
     (workspaces)))
 
-;; Bottom Bar Widget
-;; Main container for all bottom bar widgets.
+;;; Bottom Bar Widget
+;; This widget is responsible for displaying the bottom section of the bar.
+;; It includes the vertical clock, battery, utilities, brightness, music, volume, and power widgets.
 (defwidget bottom []
-  (box :orientation "v" :class "bottom" :space-evenly "false" :vexpand "false" :valign "end"
+  (box :orientation "v" 
+       :class "bottom" 
+       :space-evenly "false" 
+       :vexpand "false" 
+       :valign "end"
     (vertical-clock)
     (batt1)
     (utils)
     (brigM)
-      (music)
+    (music)
     (volum)
     (power)))
 
-;; Main Bar Widget
-;; The top-level container for the entire Eww bar.
+;;; Main Bar Widget
+;; This is the main widget that combines the top and bottom sections of the bar.
 (defwidget bar []
-  (box :class "eww_bar" :orientation "v" :vexpand "false" :hexpand "false"
+  (box :class "eww_bar" 
+       :orientation "v" 
+       :vexpand "false" 
+       :hexpand "false"
     (top)
     (bottom)))
 
-
-(defwidget battery []
-  (box :class "bat" :orientation "v" (circular-progress :class "batC" :value batteryP :start-at 0 :thickness 10 :clockwise true))
-
-  )
-
+;;; Battery Widget
+;; This widget displays the battery status.
+;; On hover, it reveals a circular progress bar showing the battery percentage.
 (defwidget batt1 [] 
-  (eventbox :onhover "eww update batt=true" :onhoverlost "eww update batt=false"
-    (box :orientation "v" :space-evenly "false" :vexpand "false" :class "batt" :valign "end"
-      (revealer :transition "slidedown" :reveal batt :duration "700ms"
- (box :class "bat" :orientation "v" (circular-progress :class "batC" :value batteryP :start-at 0 :thickness 10 :clockwise true)))
+  (eventbox :onhover "eww update batt=true" 
+            :onhoverlost "eww update batt=false"
+    (box :orientation "v" 
+         :space-evenly "false" 
+         :vexpand "false" 
+         :class "batt" 
+         :valign "end"
+      (revealer :transition "slidedown" 
+                :reveal batt 
+                :duration "700ms"
+        (box :class "bat" 
+             :orientation "v" 
+          (circular-progress :tooltip "battery" 
+                             :text "${batteryP}" 
+                             :class "batC" 
+                             :value batteryP 
+                             :start-at 0 
+                             :thickness 10 
+                             :clockwise true)))
+      (label :class "batC" 
+             :text "${battery-icon}"))))
 
-      (label :class "batC" :text "${battery-icon}"))))
-
-
-
-      (defwidget power []
-  (eventbox :onhover "eww update power=true" :onhoverlost "eww update power=false"
-    (box :orientation "v" :space-evenly "false" :vexpand "false" :class "power" :valign "end"
+;;; Power Menu Widget
+;; This widget provides power options like sleep, logout, lock, restart, and shutdown.
+;; On hover, it reveals the sleep, logout, lock and restart buttons.
+(defwidget power []
+  (eventbox :onhover "eww update power=true" 
+            :onhoverlost "eww update power=false"
+    (box :orientation "v" 
+         :space-evenly "false" 
+         :vexpand "false" 
+         :class "power" 
+         :valign "end"
       ;; Revealer for power options
-      (revealer :transition "slidedown" :reveal power :duration "700ms"
-        (box :orientation "v" :space-evenly "false"
+      (revealer :transition "slidedown" 
+                :reveal power 
+                :duration "700ms"
+        (box :orientation "v" 
+             :space-evenly "false"
           ;; Sleep button
           (button :class "buttonres" :tooltip "Sleep" :onclick "systemctl suspend" "󰤄")
           ;; Logout button
@@ -65,36 +99,71 @@
       ;; Always-visible shutdown button
       (button :class "shutbutton" :tooltip "Shutdown" :onclick "shutdown now" ""))))
 
-
-      (defwidget brigM []
-  (eventbox :onhover "eww update brigM=true" :onhoverlost "eww update brigM=false"
-    (box :orientation "v" :space-evenly "false" :spacing "0"
+;;; Brightness Control Widget
+;; This widget allows adjusting the screen brightness.
+;; On hover, it reveals a vertical slider to control the brightness level.
+(defwidget brigM []
+  (eventbox :onhover "eww update brigM=true" 
+            :onhoverlost "eww update brigM=false"
+    (box :orientation "v" 
+         :space-evenly "false" 
+         :spacing "0"
       ;; Brightness slider revealer
-      (revealer :transition "slideup" :reveal brigM :duration "800ms"
-        (scale :class "volbar" :value "100" :orientation "v" :flipped true :tooltip "Brightness: ${current-brightness}" :max 100 :min 0 :onchange "brightnessctl set {}%"))
+      (revealer :transition "slideup" 
+                :reveal brigM 
+                :duration "800ms"
+        (scale :class "volbar" 
+               :value "100" 
+               :orientation "v" 
+               :flipped true 
+               :tooltip "Brightness: ${current-brightness}" 
+               :max 100 
+               :min 0 
+               :onchange "brightnessctl set {}%"))
       ;; Brightness icon button (always visible)
-      (label :class "volume-icon" :text "󰃠"))))
+      (label :class "volume-icon" 
+             :text "󰃠"))))
 
-      (defwidget notes []
-  (eventbox :onhover "eww update notes=true" :onhoverlost "eww update notes=false"
-    (box :orientation "v" :space-evenly "false" :spacing "0"
+;;; Notes Widget
+;; This widget provides quick access to note-taking applications.
+;; On hover, it reveals buttons to launch Obsidian and Vim.
+(defwidget notes []
+  (eventbox :onhover "eww update notes=true" 
+            :onhoverlost "eww update notes=false"
+    (box :orientation "v" 
+         :space-evenly "false" 
+         :spacing "0"
       ;; Revealer for the notes buttons
-      (revealer :transition "slideup" :reveal notes :duration "800ms"
-        (box :orientation "v" :space-evenly "false"
+      (revealer :transition "slideup" 
+                :reveal notes 
+                :duration "800ms"
+        (box :orientation "v" 
+             :space-evenly "false"
           ;; Obsidian button
           (button :class "obsidian" :tooltip "Obsidian" :onclick "obsidian &" "◈")
           ;; Vim button
           (button :class "vim" :tooltip "Vim" :onclick "alacritty -e vim ~/Notes/ThinkDock &" "")))
       ;; Notes icon button (always visible)
-      (label :class "notes-icon" :text "󱓶"))))
+      (label :class "notes-icon" 
+             :text "󱓶"))))
 
-
-      (defwidget utils []
-  (eventbox :onhover "eww update utils=true" :onhoverlost "eww update utils=false"
-    (box :orientation "v" :space-evenly "false" :vexpand "false" :class "utils" :valign "end"
+;;; Utilities Widget
+;; This widget provides access to various utility applications.
+;; On hover, it reveals buttons for music recognition, night mode, color picker, and screenshot.
+(defwidget utils []
+  (eventbox :onhover "eww update utils=true" 
+            :onhoverlost "eww update utils=false"
+    (box :orientation "v" 
+         :space-evenly "false" 
+         :vexpand "false" 
+         :class "utils" 
+         :valign "end"
       ;; Utilities revealer
-      (revealer :transition "slideup" :reveal utils :duration "800ms"
-        (box :orientation "v" :space-evenly "false"
+      (revealer :transition "slideup" 
+                :reveal utils 
+                :duration "800ms"
+        (box :orientation "v" 
+             :space-evenly "false"
           ;; Music Recognition button
           (button :class "utbtn" :tooltip "Music Recognition" :onclick "flatpak run io.github.seadve.Mousai &" "󰁧")
           ;; Night Mode button
@@ -104,14 +173,26 @@
           ;; Screenshot button
           (button :class "utbtn" :tooltip "Screenshot" :onclick "eww open --toggle ssC" "")))
       ;; Always-visible utility button
-      (label :class "utilR" :text "󱁤"))))
+      (label :class "utilR" 
+             :text "󱁤"))))
 
+;;; Music Player Controls Widget
+;; This widget provides basic music player controls.
+;; On hover, it reveals next and previous track buttons.
 (defwidget music []
-  (eventbox :onhover "eww update music=true" :onhoverlost "eww update music=false"
-    (box :orientation "v" :space-evenly "false" :vexpand "false" :class "utils" :valign "end"
+  (eventbox :onhover "eww update music=true" 
+            :onhoverlost "eww update music=false"
+    (box :orientation "v" 
+         :space-evenly "false" 
+         :vexpand "false" 
+         :class "utils" 
+         :valign "end"
       ;; Utilities revealer
-      (revealer :transition "slideup" :reveal music :duration "800ms"
-        (box :orientation "v" :space-evenly "false"
+      (revealer :transition "slideup" 
+                :reveal music 
+                :duration "800ms"
+        (box :orientation "v" 
+             :space-evenly "false"
           ;; Next button
           (button :class "utbtn" :tooltip "Next" :onclick "playerctl next && ./desktop/scripts/album.sh && eww reload" "󰒭")
           ;; Previous button
@@ -119,34 +200,56 @@
       ;; Main player button with dynamic icon
       (button :class "utilR" 
               :tooltip "Pause/Play" 
-              :onclick "playerctl play-pause" "${play-icon}"
-              ))))
+              :onclick "playerctl play-pause" 
+              "${play-icon}"))))
 
-
-       (defwidget vertical-clock []
-  (box :orientation "v" :class "vertical-clock" :valign "center"
+;;; Vertical Clock Widget
+;; This widget displays the time vertically, with the hour above the minute.
+(defwidget vertical-clock []
+  (box :orientation "v" 
+       :class "vertical-clock" 
+       :valign "center"
     (label :class "clock-hour" :text hour)
     (label :class "clock-min" :text minute)))
 
-    (defwidget volum []
-  (eventbox :onhover "eww update volum=true" :onhoverlost "eww update volum=false"
-    (box :orientation "v" :space-evenly "false" :spacing "0"
+;;; Volume Control Widget
+;; This widget allows adjusting the system volume.
+;; On hover, it reveals a vertical slider to control the volume level.
+(defwidget volum []
+  (eventbox :onhover "eww update volum=true" 
+            :onhoverlost "eww update volum=false"
+    (box :orientation "v" 
+         :space-evenly "false" 
+         :spacing "0"
       ;; Volume slider revealer
-      (revealer :transition "slideup" :reveal volum :duration "800ms"
-        (scale :class "volbar" :value current-volume :orientation "v" :flipped true :tooltip "Volume: ${current-volume}%" :max 101 :min 0 :onchange "amixer sset Master {}%"))
+      (revealer :transition "slideup" 
+                :reveal volum 
+                :duration "800ms"
+        (scale :class "volbar" 
+               :value current-volume 
+               :orientation "v" 
+               :flipped true 
+               :tooltip "Volume: ${current-volume}%" 
+               :max 101 
+               :min 0 
+               :onchange "amixer sset Master {}%"))
       ;; Volume icon button (always visible)
-      (label :class "volume-icon" :text "󰕾"))))
+      (label :class "volume-icon" 
+             :text "󰕾"))))
 
-      (defwidget workspaces []
+;;; Workspaces Widget
+;; This widget displays the current workspaces.
+;; The content is generated by a script and injected literally.
+(defwidget workspaces []
   (literal :content workspacesS))
 
-
+;;; Screenshot Window Widget
+;; This widget provides options for taking screenshots.
+;; It includes buttons for area screenshot, full screenshot, and closing the window.
 (defwidget ssCW []
   (box :class "ssc"
        :orientation "h"
        :space-evenly true
     (button :class "ssbtn" :tooltip "Area Screenshot" :onclick "eww close ssC && bar/scripts/ssS.sh" "󰆞")
     (button :class "ssbtn" :tooltip "Full Screenshot" :onclick "eww close ssC && bar/scripts/ssF.sh" "󰹑")
-    (button :class "ssbtn" :tooltip "Close" :onclick "eww close ssC" "󰈆")))
-
-
+    (button :class "ssbtn" :tooltip "Close" :onclick "eww close ssC" "󰈆"))))
