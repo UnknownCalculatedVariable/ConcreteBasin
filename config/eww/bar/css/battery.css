@@ -7,13 +7,12 @@
 .battbtn {
    background-color: @color0;
             color: @foreground ;
-  	font-size: 25px;
+  	font-size: 19px;
         border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
 
 .battery-info {
     color: @foreground;
-    font-size: 14px;
-    padding: 5px;
+    font-size: 4px;
 }

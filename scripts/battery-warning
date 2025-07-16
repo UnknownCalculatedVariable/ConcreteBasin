@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Get battery percentage
+BATTERY=$(cat /sys/class/power_supply/BAT*/capacity)
+STATUS=$(cat /sys/class/power_supply/BAT*/status)
+
+# If battery is below 20% and not charging, show warning
+if [ "$BATTERY" -le 20 ] && [ "$STATUS" != "Charging" ]; then
+    /usr/bin/eww open bwarn
+fi

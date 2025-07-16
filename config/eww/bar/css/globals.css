@@ -15,3 +15,16 @@
             color: @foreground;
             
 }
+
+.bat {
+	background-color: @color0;
+	color: @foreground;
+	padding-bottom: 10px;
+}
+
+.batC {
+	background-color: @color0;
+	color: @foreground;
+	padding-left:2px;
+	padding-bottom: 10px;
+}

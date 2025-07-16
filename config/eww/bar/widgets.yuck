@@ -18,7 +18,7 @@
 (defwidget bottom []
   (box :orientation "v" :class "bottom" :space-evenly "false" :vexpand "false" :valign "end"
     (vertical-clock)
-    (battery)
+    (batt1)
     (utils)
     (brigM)
       (music)
@@ -34,7 +34,19 @@
 
 
 (defwidget battery []
-      (button :class "battbtn" :tooltip "${batteryP}" :onclick "notify-send ${batteryP}" "󰁹"))
+  (box :class "bat" :orientation "v" (circular-progress :class "batC" :value batteryP :start-at 0 :thickness 10 :clockwise true))
+
+  )
+
+(defwidget batt1 [] 
+  (eventbox :onhover "eww update batt=true" :onhoverlost "eww update batt=false"
+    (box :orientation "v" :space-evenly "false" :vexpand "false" :class "batt" :valign "end"
+      (revealer :transition "slidedown" :reveal batt :duration "700ms"
+ (box :class "bat" :orientation "v" (circular-progress :class "batC" :value batteryP :start-at 0 :thickness 10 :clockwise true)))
+
+      (label :class "batC" :text "${battery-icon}"))))
+
+
 
       (defwidget power []
   (eventbox :onhover "eww update power=true" :onhoverlost "eww update power=false"

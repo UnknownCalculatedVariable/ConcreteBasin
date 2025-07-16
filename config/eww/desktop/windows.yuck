@@ -11,3 +11,29 @@
 :stacking "bg"
 (time))
 
+(defwindow bwarn 
+:monitor 0
+:geometry (geometry
+     :x "10" 
+     :y "10" 
+     :width "420px" 
+     :height "80px" 
+     :anchor "center")
+:focusable false
+:exclusive false
+:stacking "fg"
+(warning-widget))
+
+(defwindow stats 
+:monitor 0
+:geometry (geometry
+     :x "10" 
+     :y "140px" 
+     :width "420px" 
+     :height "600px" 
+     :anchor "right top")
+:focusable false
+:exclusive false
+:stacking "bg"
+"hi")
+

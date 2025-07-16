@@ -5,6 +5,7 @@
 (defvar gamma false)
 (defvar notes false)
 (defvar music false)
+(defvar batt false)
 (defvar battery_revealer false)
 (deflisten batteryP :initial "" 'bar/scripts/battery.sh')
 (deflisten battery_status_info :initial "" "bar/scripts/battery_info.sh")
@@ -14,3 +15,4 @@
 (deflisten cpuV :initial "" "bar/scripts/cpuF.sh")
 (deflisten workspacesS :initial "" "bar/scripts/workspaces.sh")
 (deflisten play-icon :initial "" "bar/scripts/play-stat.sh")
+(deflisten battery-icon :initial "" "bar/scripts/battery-icon.sh")

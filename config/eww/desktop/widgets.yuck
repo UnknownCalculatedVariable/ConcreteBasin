@@ -12,3 +12,26 @@
     :halign "center"
     :text "${second}  ")))
 
+(defwidget warning-widget []
+(box    :space-evenly "false" 
+        :halign "center" 
+        :valign "center" 
+  (box 
+    :space-evenly "false" 
+    :valign "center" 
+    :halign "center" 
+    (label 
+      :valign "center" 
+      :class "battery-warn" 
+      :text " Battery Low  "))
+  
+  (box :valign "end" 
+    (button 
+      :class "batteryB" 
+      :tooltip "close" 
+      :onclick "eww close bwarn" "OK")
+    (button 
+      :class "batteryB" 
+      :tooltip "battery-saver" 
+      :onclick "desktop/scripts/psC.sh" "Enter PS"))))
+
