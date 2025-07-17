@@ -1,0 +1,8 @@
+(defwidget top []
+  (box :orientation "v" 
+       :class "bottom" 
+       :space-evenly "false" 
+       :vexpand "false" 
+       :valign "start"
+    (notes)
+    (workspaces)))

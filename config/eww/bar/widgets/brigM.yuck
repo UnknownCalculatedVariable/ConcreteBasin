@@ -1,0 +1,21 @@
+(defwidget brigM []
+  (eventbox :onhover "eww update brigM=true" 
+            :onhoverlost "eww update brigM=false"
+    (box :orientation "v" 
+         :space-evenly "false" 
+         :spacing "0"
+      ;; Brightness slider revealer
+      (revealer :transition "slideup" 
+                :reveal brigM 
+                :duration "800ms"
+        (scale :class "volbar" 
+               :value "100" 
+               :orientation "v" 
+               :flipped true 
+               :tooltip "Brightness: ${current-brightness}" 
+               :max 100 
+               :min 0 
+               :onchange "brightnessctl set {}%"))
+      ;; Brightness icon button (always visible)
+      (label :class "volume-icon" 
+             :text "󰃠"))))

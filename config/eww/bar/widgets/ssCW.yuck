@@ -1,0 +1,7 @@
+(defwidget ssCW []
+  (box :class "ssc"
+       :orientation "h"
+       :space-evenly true
+    (button :class "ssbtn" :tooltip "Area Screenshot" :onclick "eww close ssC && bar/scripts/ssS.sh" "󰆞")
+    (button :class "ssbtn" :tooltip "Full Screenshot" :onclick "eww close ssC && bar/scripts/ssF.sh" "󰹑")
+    (button :class "ssbtn" :tooltip "Close" :onclick "eww close ssC" "󰈆")))

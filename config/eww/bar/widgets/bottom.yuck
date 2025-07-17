@@ -1,0 +1,13 @@
+(defwidget bottom []
+  (box :orientation "v" 
+       :class "bottom" 
+       :space-evenly "false" 
+       :vexpand "false" 
+       :valign "end"
+    (vertical-clock)
+    (batt1)
+    (utils)
+    (brigM)
+    (music)
+    (volum)
+    (power)))

@@ -1,0 +1,24 @@
+(defwidget power []
+  (eventbox :onhover "eww update power=true" 
+            :onhoverlost "eww update power=false"
+    (box :orientation "v" 
+         :space-evenly "false" 
+         :vexpand "false" 
+         :class "power" 
+         :valign "end"
+      ;; Revealer for power options
+      (revealer :transition "slidedown" 
+                :reveal power 
+                :duration "700ms"
+        (box :orientation "v" 
+             :space-evenly "false"
+          ;; Sleep button
+          (button :class "buttonres" :tooltip "Sleep" :onclick "systemctl suspend" "󰤄")
+          ;; Logout button
+          (button :class "buttonoff" :tooltip "Logout" :onclick "swaymsg exit" "")
+          ;; Lock button
+          (button :class "buttonoff" :tooltip "Lock" :onclick "swaylock &" "")
+          ;; Restart button
+          (button :class "buttonres" :tooltip "Restart" :onclick "reboot" "")))
+      ;; Always-visible shutdown button
+      (button :class "shutbutton" :tooltip "Shutdown" :onclick "shutdown now" ""))))

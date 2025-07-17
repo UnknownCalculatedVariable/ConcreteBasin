@@ -1,0 +1,6 @@
+(defwidget vertical-clock []
+  (box :orientation "v" 
+       :class "vertical-clock" 
+       :valign "center"
+    (label :class "clock-hour" :text hour)
+    (label :class "clock-min" :text minute)))

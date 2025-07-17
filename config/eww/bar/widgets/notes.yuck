@@ -1,0 +1,19 @@
+(defwidget notes []
+  (eventbox :onhover "eww update notes=true" 
+            :onhoverlost "eww update notes=false"
+    (box :orientation "v" 
+         :space-evenly "false" 
+         :spacing "0"
+      ;; Revealer for the notes buttons
+      (revealer :transition "slideup" 
+                :reveal notes 
+                :duration "800ms"
+        (box :orientation "v" 
+             :space-evenly "false"
+          ;; Obsidian button
+          (button :class "obsidian" :tooltip "Obsidian" :onclick "obsidian &" "◈")
+          ;; Vim button
+          (button :class "vim" :tooltip "Vim" :onclick "alacritty -e vim ~/Notes/ThinkDock &" "")))
+      ;; Notes icon button (always visible)
+      (label :class "notes-icon" 
+             :text "󱓶"))))
