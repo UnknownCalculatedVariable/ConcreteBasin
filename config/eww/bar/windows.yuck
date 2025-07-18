@@ -4,7 +4,7 @@
   ;; Window positioning and size
   :geometry (geometry :x "4px"          ; 4px from left edge
                       :y "0"            ; Aligned to top
-                      :width "10px"      ; Fixed narrow width
+                      :width "45px"      ; Fixed narrow width
                       :height "100%"     ; Full screen height
                       :anchor "left center") ; Anchored left-center
   

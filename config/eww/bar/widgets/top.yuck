@@ -4,5 +4,4 @@
        :space-evenly "false" 
        :vexpand "false" 
        :valign "start"
-    (notes)
     (workspaces)))
