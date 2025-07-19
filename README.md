@@ -1,3 +1,4 @@
 # Dotfiles Backup
 
-[![screenshots/1.png]]
+![Main screen](screenshots/1.png)
+
