@@ -16,3 +16,8 @@
     color: @foreground;
     font-size: 4px;
 }
+
+.batC {
+	padding-left: 15px;
+	
+}

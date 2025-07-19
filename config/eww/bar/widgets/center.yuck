@@ -1,7 +1,0 @@
-(defwidget center []
-  (box :orientation "v" 
-       :class "bottom" 
-       :space-evenly "false" 
-       :vexpand "false" 
-       :valign "center"
-    (vertical-clock)))

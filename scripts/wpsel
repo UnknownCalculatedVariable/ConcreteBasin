@@ -128,7 +128,7 @@ if [[ -f "$selected_wallpaper" ]]; then
     # Apply colors (async to avoid blocking)
     	sleep 0.2
     	( wal -i "$selected_wallpaper" >/dev/null 2>&1 ) &
-    	eww reload
-	eww reload
-	eww reload
+	killall eww
+	eww open-many side clock
 fi
+

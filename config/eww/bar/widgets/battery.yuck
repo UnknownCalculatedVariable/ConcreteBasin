@@ -12,7 +12,6 @@
         (box :class "bat" 
              :orientation "v" 
           (circular-progress :tooltip "battery" 
-                             :text "${batteryP}" 
                              :class "batC" 
                              :value batteryP 
                              :start-at 0 

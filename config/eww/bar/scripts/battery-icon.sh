@@ -1,51 +1,61 @@
 #!/bin/bash
 
-# Update interval in seconds (default: 5)
+## Battery Status Script with Icon Output
+## --------------------------------------
+## Outputs a battery icon based on charge level and charging status.
+## Intended for use in status bars (polybar, i3bar, etc).
+
+## Update interval in seconds (default: 1)
 UPDATE_INTERVAL=1
 
 while true; do
-    # Get battery percentage
+    # --- Get current battery percentage ---
     battery_percent=$(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null | head -n 1)
 
-    # Check charging status
+    # --- Get current charging status (e.g., Charging, Discharging, Full) ---
     charging_status=$(cat /sys/class/power_supply/BAT*/status 2>/dev/null | head -n 1)
 
-    # Check if we got a valid percentage
+    # --- If unable to read battery info, show a question mark icon ---
     if [[ -z "$battery_percent" ]]; then
-        echo ""  # Question mark icon if battery not found
+        echo ""  # Font Awesome 'question' icon
         sleep $UPDATE_INTERVAL
         continue
     fi
 
-    # Determine which icon to use based on percentage and charging status
+    # --- Determine charging/discharging and select appropriate icon ---
     if [[ "$charging_status" == "Charging" ]]; then
-        # Charging icons with battery level indicators
-        if [[ "$battery_percent" -ge 90 ]]; then
-            echo "󰂅"  # 90-100% charging
-        elif [[ "$battery_percent" -ge 60 ]]; then
-            echo "󰂇"  # 60-89% charging
-        elif [[ "$battery_percent" -ge 40 ]]; then
-            echo "󰂆"  # 40-59% charging
+        # CHARGING STATE ICONS (Material Design, "plug" overlay)
+        if   [[ "$battery_percent" -ge 90 ]]; then
+            echo "󰂅"  # Battery charging 100%
+        elif [[ "$battery_percent" -ge 70 ]]; then
+            echo "󰂋"  # Battery charging 80%
+        elif [[ "$battery_percent" -ge 50 ]]; then
+            echo "󰂉"  # Battery charging 60%
+        elif [[ "$battery_percent" -ge 30 ]]; then
+            echo "󰂇"  # Battery charging 40%
         elif [[ "$battery_percent" -ge 10 ]]; then
-            echo "󰂇"  # 10-39% charging
+            echo "󰢜"  # Battery charging 20%
         else
-            echo "󰢟"  # 0-9% charging
+            echo "󰢟"  # Battery alert charging
         fi
     else
-        # Regular battery level indicators
-        if [[ "$battery_percent" -ge 90 ]]; then
-            echo ""
-        elif [[ "$battery_percent" -ge 60 ]]; then
-            echo ""
-        elif [[ "$battery_percent" -ge 40 ]]; then
-            echo ""
+        # DISCHARGING or FULL STATE ICONS (Font Awesome)
+        if   [[ "$battery_percent" -ge 90 ]]; then
+            echo ""  # Battery full
+        elif [[ "$battery_percent" -ge 70 ]]; then
+            echo ""  # Battery 75%
+        elif [[ "$battery_percent" -ge 50 ]]; then
+            echo ""  # Battery 50%
+        elif [[ "$battery_percent" -ge 30 ]]; then
+            echo ""  # Battery 25%
         elif [[ "$battery_percent" -ge 10 ]]; then
-            echo ""
+            echo ""  # Battery low
         else
-            echo ""
+            echo ""  # Font Awesome 'alert' icon
         fi
     fi
 
-    # Wait before next update
+    # --- Sleep and update again ---
     sleep $UPDATE_INTERVAL
 done
+
