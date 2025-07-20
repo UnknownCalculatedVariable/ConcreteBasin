@@ -1,3 +1,0 @@
-(include "dashboard/widgets.yuck")
-(include "dashboard/windows.yuck")
-(include "dashboard/vars.yuck")

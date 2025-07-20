@@ -11,10 +11,11 @@
                 :duration "700ms"
         (box :class "bat" 
              :orientation "v" 
-          (circular-progress :tooltip "battery" 
+          (circular-progress :tooltip "${batteryP}%" 
                              :class "batC" 
                              :value batteryP 
                              :start-at 0 
                              :thickness 10 
                              :clockwise true)))
-(button :class "batC" :onclick "notify-send ${batteryP}%" "${battery-icon}"))))
+(button :class "batC" :tooltip "${batteryP}%" :onclick "notify-send ${batteryP}%" "${battery-icon}"))))
+
