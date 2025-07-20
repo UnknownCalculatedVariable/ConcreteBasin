@@ -1,18 +1,6 @@
-
-# Set modifiers
 set $mod Mod4
 set $mod1 Mod1
 
-font pango:monospace 8
-
-# Startup applications and session commands (update as needed for Wayland-compatible apps)
-exec --no-startup-id dex --autostart --environment sway
-exec --no-startup-id rm ~/ly-session.log
-exec --no-startup-id xss-lock --transfer-sleep-lock -- swaylock --nofork        # swaylock instead of i3lock recommended
-exec --no-startup-id nm-applet
-
-# Volume control keybindings (PulseAudio via pactl works under Sway)
-set $refresh_swaystatus killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_swaystatus
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_swaystatus
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_swaystatus
@@ -20,43 +8,29 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 floating_modifier $mod
 
-# Launch applications
 bindsym $mod+q exec alacritty
 bindsym $mod+e exec nautilus
 bindsym $mod+p exec eww open-many side clock
 bindsym $mod+w kill
 bindsym $mod+Tab exec --no-startup-id rofi -show drun
 
-# Compositor and utilities
-exec --no-startup-id picom --backend glx --vsync                             # Consider using Wayland-native compositor effects or remove if redundant
-exec --no-startup-id swww-daemon
-exec --no-startup-id wal -i ~/.config/i3/def
-exec --no-startup-id eww open clock
-exec --no-startup-id eww open side
-exec --no-startup-id mako
-
-# Screenshot with scrot (use grim or swappy for native Wayland screenshots)
 bindsym Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/screenshot_$(date +%Y-%m-%d-%H-%M-%S).png
 
-# Window focus moving
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# Window moving
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Layout
 bindsym $mod+h split h
 bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+space floating toggle
 
-# Workspaces
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -95,7 +69,6 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-# Resize Mode
 mode "resize" {
     bindsym j resize shrink width 10px
     bindsym k resize grow height 10px
@@ -110,24 +83,5 @@ mode "resize" {
     bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
-
-default_border none
-default_floating_border none
-
-# Extra App Shortcuts
-bindsym $mod1+w exec --no-startup-id .local/bin/wpsel
-bindsym $mod1+n exec --no-startup-id .local/bin/notes-manager
-bindsym $mod1+e exec --no-startup-id .local/bin/e-book-manager
-bindsym $mod1+a exec --no-startup-id .local/bin/sink_sel.sh
-bindsym $mod1+c exec --no-startup-id alacritty -e cmus &
-
-# Gaps (gaps are supported in sway)
-gaps inner 10
-gaps outer 0
-
-# Window rules (class -> app_id)
-for_window [app_id="io.github.seadve.Mousai"] floating enable
-for_window [app_id="dev.mufeed.Wordbook"] floating enable
-
 
 

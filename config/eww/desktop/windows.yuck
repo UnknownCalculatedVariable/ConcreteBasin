@@ -2,38 +2,25 @@
 :monitor 0
 :geometry (geometry
      :x "10" 
-     :y "10" 
-     :width "420px" 
+     :y "120" 
+     :width "1920px" 
      :height "100px" 
-     :anchor "right top")
+     :anchor "center bottom")
 :focusable false
 :exclusive false
 :stacking "bg"
 (time))
 
-(defwindow bwarn 
+(defwindow RQ 
 :monitor 0
 :geometry (geometry
-     :x "10" 
+     :x "0" 
      :y "10" 
-     :width "420px" 
-     :height "80px" 
-     :anchor "center")
-:focusable false
-:exclusive false
-:stacking "fg"
-(warning-widget))
-
-(defwindow stats 
-:monitor 0
-:geometry (geometry
-     :x "10" 
-     :y "140px" 
-     :width "420px" 
-     :height "600px" 
-     :anchor "right top")
+     :width "1920px" 
+     :height "100px" 
+     :anchor "center bottom")
 :focusable false
 :exclusive false
 :stacking "bg"
-"hi")
+(rquo))
 

@@ -7,7 +7,7 @@
     (vertical-clock)
     (batt1)
     (utils)
-    (brigM)
     (music)
+    (brigM)
     (volum)
     (power)))
