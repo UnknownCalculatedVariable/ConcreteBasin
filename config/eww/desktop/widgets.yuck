@@ -12,8 +12,5 @@
     :halign "center"
     :text "${second}  ")))
 
-(defwidget rquo []
-  (box :halign "center"
-       :class "quo"
-    (label :halign "center" :class "qt"
-      :text "${rick}")))
+(defwidget album []
+  (literal :content album))

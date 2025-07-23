@@ -10,6 +10,6 @@
     :initial "" 
     'desktop/scripts/second.sh' )
 
-(deflisten rick 
+(deflisten album 
     :initial ""
-    'desktop/scripts/rick.sh')
+    'desktop/scripts/album.sh')

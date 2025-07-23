@@ -1,26 +1,40 @@
 (defwindow clock 
 :monitor 0
 :geometry (geometry
-     :x "10" 
-     :y "120" 
-     :width "1920px" 
+     :x "-25" 
+     :y "10" 
+     :width "480px" 
      :height "100px" 
-     :anchor "center bottom")
+     :anchor "top right")
 :focusable false
 :exclusive false
 :stacking "bg"
 (time))
 
-(defwindow RQ 
+(defwindow album 
 :monitor 0
 :geometry (geometry
-     :x "0" 
-     :y "10" 
-     :width "1920px" 
-     :height "100px" 
-     :anchor "center bottom")
+     :x "15" 
+     :y "140" 
+     :width "400px" 
+     :height "400px" 
+     :anchor "top right")
 :focusable false
 :exclusive false
 :stacking "bg"
-(rquo))
+(album))
+
+
+;;(defwindow RQ 
+;;:monitor 0
+;;:geometry (geometry
+;;     :x "0" 
+;;     :y "10" 
+;;     :width "1920px" 
+;;     :height "100px" 
+;;     :anchor "center bottom")
+;;:focusable false
+;;:exclusive false
+;;:stacking "bg"
+;;(rquo))
 

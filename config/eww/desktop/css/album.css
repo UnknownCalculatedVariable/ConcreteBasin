@@ -1,3 +1,7 @@
-.album {
-    background-color: @color0;
+.image {
+	background-color: @color0;
+}
+
+.image-image {
+	padding-top: 100px;
 }

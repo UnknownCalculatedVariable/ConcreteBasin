@@ -7,6 +7,7 @@
     /*background-color: #02002f;*/
     background-color: @color0;
     color: @color1;
+    opacity: 1;
     font-size: 35px;
     font-family: JetBrainsMono Nerd Font;
     padding-left: 30px;

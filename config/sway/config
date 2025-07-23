@@ -130,4 +130,5 @@ for_window [app_id="io.github.seadve.Mousai"] floating enable
 for_window [app_id="dev.mufeed.Wordbook"] floating enable
 
 
+exec --no-startup-id /usr/bin/kdeconnectd
 

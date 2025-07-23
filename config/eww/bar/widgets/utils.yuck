@@ -12,6 +12,8 @@
                 :duration "800ms"
         (box :orientation "v" 
              :space-evenly "false"
+          ;;Ring Phone
+          (button :class "utbtn" :tooltip "Music Recognition" :onclick "bar/scripts/ring.sh" "󱆫")
           ;; Music Recognition button
           (button :class "utbtn" :tooltip "Music Recognition" :onclick "flatpak run io.github.seadve.Mousai &" "󰁧")
           ;; Night Mode button
