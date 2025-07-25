@@ -42,7 +42,7 @@ download_art() {
 
 # Output YUCK widget
 output_widget() {
-    echo '(box :class "image" (image :path "'"$ALBUM_CACHE"'" :image-width 400 :image-height 450 :class "image-image"))'
+    echo '(box :class "image" :halign "center" :valign "center"  (image :path "'"$ALBUM_CACHE"'" :image-width 400 :image-height 380 :class "image-image"))'
 }
 
 # Main update function

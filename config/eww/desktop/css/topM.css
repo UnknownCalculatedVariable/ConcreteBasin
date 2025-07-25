@@ -1,0 +1,10 @@
+.floating {
+	border-radius: 20px;
+	background-color: transparent;
+}
+
+.float {
+	background-color: @color10;
+	padding-left: 50px;
+	padding-right: 50px;
+}

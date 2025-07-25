@@ -14,15 +14,15 @@
 (defwindow album 
 :monitor 0
 :geometry (geometry
-     :x "15" 
+     :x "11" 
      :y "140" 
-     :width "400px" 
+     :width "407px" 
      :height "400px" 
      :anchor "top right")
 :focusable false
 :exclusive false
 :stacking "bg"
-(album))
+(alb))
 
 
 ;;(defwindow RQ 
@@ -37,4 +37,19 @@
 ;;:exclusive false
 ;;:stacking "bg"
 ;;(rquo))
+
+
+(defwindow floating 
+:monitor 0
+:geometry (geometry
+     :x "0" 
+     :y "10" 
+     :width "150px" 
+     :height "30px" 
+     :anchor "top center")
+:focusable false
+:exclusive false
+:stacking "fg"
+(float))
+
 

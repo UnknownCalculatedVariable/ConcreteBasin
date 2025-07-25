@@ -13,4 +13,16 @@
     :text "${second}  ")))
 
 (defwidget album []
-  (literal :content album))
+(literal :content album))
+
+(defwidget alb [] 
+(box :class "image" 
+     :halign "center" 
+     :valign "center" 
+(album)))
+
+(defwidget float [] 
+(box :class "float" 
+     :halign "center"
+  (label :text "hi")))
+
