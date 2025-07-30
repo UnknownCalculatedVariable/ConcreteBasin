@@ -16,3 +16,4 @@
 (deflisten workspacesS :initial "" "bar/scripts/workspaces.sh")
 (deflisten play-icon :initial "" "bar/scripts/play-stat.sh")
 (deflisten battery-icon :initial "" "bar/scripts/battery-icon.sh")
+(defpoll date :interval "14h" 'date +%d/%m/%y')

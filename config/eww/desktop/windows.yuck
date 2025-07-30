@@ -25,31 +25,3 @@
 (alb))
 
 
-;;(defwindow RQ 
-;;:monitor 0
-;;:geometry (geometry
-;;     :x "0" 
-;;     :y "10" 
-;;     :width "1920px" 
-;;     :height "100px" 
-;;     :anchor "center bottom")
-;;:focusable false
-;;:exclusive false
-;;:stacking "bg"
-;;(rquo))
-
-
-(defwindow floating 
-:monitor 0
-:geometry (geometry
-     :x "0" 
-     :y "10" 
-     :width "150px" 
-     :height "30px" 
-     :anchor "top center")
-:focusable false
-:exclusive false
-:stacking "fg"
-(float))
-
-

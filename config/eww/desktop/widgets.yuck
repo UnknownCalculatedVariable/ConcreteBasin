@@ -21,8 +21,3 @@
      :valign "center" 
 (album)))
 
-(defwidget float [] 
-(box :class "float" 
-     :halign "center"
-  (label :text "hi")))
-

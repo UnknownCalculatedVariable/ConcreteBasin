@@ -1,5 +1,5 @@
 
-# Set modifiers
+# sET modifiers
 set $mod Mod4
 set $mod1 Mod1
 
@@ -23,7 +23,7 @@ floating_modifier $mod
 # Launch applications
 bindsym $mod+q exec alacritty
 bindsym $mod+e exec nautilus
-bindsym $mod+p exec eww open-many side clock
+bindsym $mod+p exec eww open-many side clock album
 bindsym $mod+w kill
 bindsym $mod+Tab exec --no-startup-id rofi -show drun
 
@@ -119,6 +119,8 @@ bindsym $mod1+w exec --no-startup-id .local/bin/wpsel
 bindsym $mod1+n exec --no-startup-id .local/bin/notes-manager
 bindsym $mod1+e exec --no-startup-id .local/bin/e-book-manager
 bindsym $mod1+a exec --no-startup-id .local/bin/sink_sel.sh
+bindsym $mod1+b exec --no-startup-id .local/bin/rofi-bluetooth
+
 bindsym $mod1+c exec --no-startup-id alacritty -e cmus &
 
 # Gaps (gaps are supported in sway)
@@ -128,6 +130,13 @@ gaps outer 0
 # Window rules (class -> app_id)
 for_window [app_id="io.github.seadve.Mousai"] floating enable
 for_window [app_id="dev.mufeed.Wordbook"] floating enable
+for_window [app_id="org.gnome.Nautilus"] floating enable
+for_window [app_id="Alacritty"] floating enable
+for_window [app_id="Alacritty"] resize set 1200px 800px
+ 
+
+
+
 
 
 exec --no-startup-id /usr/bin/kdeconnectd
