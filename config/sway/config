@@ -7,8 +7,9 @@ font pango:monospace 8
 
 # Startup applications and session commands (update as needed for Wayland-compatible apps)
 exec --no-startup-id dex --autostart --environment sway
+exec --no-startup-id zen-browser 
 exec --no-startup-id rm ~/ly-session.log
-exec --no-startup-id xss-lock --transfer-sleep-lock -- swaylock --nofork        # swaylock instead of i3lock recommended
+exec --no-startup-id xss-lock --transfer-sleep-lock -- swaylock --nofork
 exec --no-startup-id nm-applet
 
 # Volume control keybindings (PulseAudio via pactl works under Sway)
@@ -21,7 +22,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # Launch applications
-bindsym $mod+q exec alacritty
+bindsym $mod+q exec kitty
 bindsym $mod+e exec nautilus
 bindsym $mod+p exec eww open-many side clock album
 bindsym $mod+w kill
@@ -134,10 +135,10 @@ for_window [app_id="org.gnome.Nautilus"] floating enable
 for_window [app_id="Alacritty"] floating enable
 for_window [app_id="Alacritty"] resize set 1200px 800px
  
-
-
-
-
-
 exec --no-startup-id /usr/bin/kdeconnectd
 
+input "type:pointer" {
+    accel_profile "flat"   # Disable acceleration (optional)
+    pointer_accel 0.5     # Sensitivity (adjust as needed)
+
+}

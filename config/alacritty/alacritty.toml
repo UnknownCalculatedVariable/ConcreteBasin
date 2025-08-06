@@ -23,7 +23,7 @@ draw_bold_text_with_bright_colors = false
 size = 13
 
 [font.normal]
-family = "JetBrainsMono Nerd Font Mono"
+family = "Cascadia Code"
 style = "medium"
 
 [window.dimensions]

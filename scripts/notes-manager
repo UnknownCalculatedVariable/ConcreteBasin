@@ -131,7 +131,6 @@ choose_editor() {
                 -c 'set wrap' \
                 -c 'set linebreak' \
                 -c 'set nonumber' \
-                -c 'Goyo' \
                 '$file_path'" &
             ;;
         *)
