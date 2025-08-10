@@ -4,8 +4,9 @@
        :space-evenly "false" 
        :vexpand "false" 
        :valign "end"
+       :halign "center"
     (vertical-clock)
-    (batt1)
+;;    (batt1)
     (utils)
     (music)
     (brigM)

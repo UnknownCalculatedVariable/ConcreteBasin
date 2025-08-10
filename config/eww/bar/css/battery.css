@@ -10,16 +10,14 @@
   	font-size: 19px;
         border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-    padding-left: 5px;
 }
 
 .battery-info {
     color: @foreground;
     font-size: 4px;
-    padding-left: 5px;
 }
 
 .batC {
-	padding-left: 14px;
 	font-size: 19px;	
+	padding-left: 14px;
 }

@@ -1,9 +1,11 @@
 (defwidget batt1 [] 
   (eventbox :onhover "eww update batt=true" 
             :onhoverlost "eww update batt=false"
+    :halign "center"
     (box :orientation "v" 
          :space-evenly "false" 
          :vexpand "false" 
+         :halign "center"
          :class "batt" 
          :valign "end"
       (revealer :transition "slidedown" 
@@ -11,11 +13,17 @@
                 :duration "700ms"
         (box :class "bat" 
              :orientation "v" 
+             :halign "center"
           (circular-progress :tooltip "${batteryP}%" 
                              :class "batC" 
                              :value batteryP 
                              :start-at 0 
                              :thickness 10 
                              :clockwise true)))
-(button :class "batC" :tooltip "${batteryP}%" :onclick "notify-send ${batteryP}%" "${battery-icon}"))))
-
+      (button :halign "center" 
+              :valign "center" 
+              :hexpand "true"
+              :class "batC" 
+              :tooltip "${batteryP}%" 
+              :onclick "notify-send ${batteryP}%" 
+              "${battery-icon}"))))

@@ -1,10 +1,21 @@
-
-# sET modifiers
+# ==================== MODIFIERS ====================
+# Set modifiers for keybindings
 set $mod Mod4
 set $mod1 Mod1
 
-font pango:monospace 8
+# ==================== APPEARANCE ====================
+# Font settings
+font pango:monospace 8 
 
+# Border settings
+default_border none
+default_floating_border none
+
+# Gaps settings
+gaps inner 10
+gaps outer 0
+
+# ==================== STARTUP APPLICATIONS ====================
 # Startup applications and session commands (update as needed for Wayland-compatible apps)
 exec --no-startup-id dex --autostart --environment sway
 exec --no-startup-id zen-browser 
@@ -12,6 +23,14 @@ exec --no-startup-id rm ~/ly-session.log
 exec --no-startup-id xss-lock --transfer-sleep-lock -- swaylock --nofork
 exec --no-startup-id nm-applet
 
+# Compositor and utilities
+exec --no-startup-id swww-daemon
+exec --no-startup-id wal -i ~/.config/i3/def
+exec --no-startup-id eww open side
+exec --no-startup-id mako
+exec --no-startup-id /usr/bin/kdeconnectd
+
+# ==================== VOLUME CONTROLS ====================
 # Volume control keybindings (PulseAudio via pactl works under Sway)
 set $refresh_swaystatus killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_swaystatus
@@ -19,25 +38,32 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_swaystatus
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_swaystatus
 
-floating_modifier $mod
+# ==================== BRIGHTNESS CONTROLS ====================
+# Brightness control keybindings (using light or brightnessctl)
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
 
+# ==================== APPLICATION LAUNCHERS ====================
 # Launch applications
 bindsym $mod+q exec kitty
 bindsym $mod+e exec nautilus
 bindsym $mod+p exec eww open-many side clock album
-bindsym $mod+w kill
 bindsym $mod+Tab exec --no-startup-id rofi -show drun
 
-# Compositor and utilities
-exec --no-startup-id picom --backend glx --vsync                             # Consider using Wayland-native compositor effects or remove if redundant
-exec --no-startup-id swww-daemon
-exec --no-startup-id wal -i ~/.config/i3/def
-exec --no-startup-id eww open clock
-exec --no-startup-id eww open side
-exec --no-startup-id mako
-
 # Screenshot with scrot (use grim or swappy for native Wayland screenshots)
-bindsym Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/screenshot_$(date +%Y-%m-%d-%H-%M-%S).png
+bindsym Print exec eww open --toggle ssC 
+
+# Extra App Shortcuts
+bindsym $mod1+w exec --no-startup-id .local/bin/wpsel
+bindsym $mod1+n exec --no-startup-id .local/bin/notes-manager
+bindsym $mod1+e exec --no-startup-id .local/bin/e-book-manager
+bindsym $mod1+a exec --no-startup-id .local/bin/sink_sel.sh
+bindsym $mod1+b exec --no-startup-id .local/bin/rofi-bluetooth
+bindsym $mod1+c exec --no-startup-id alacritty -e cmus &
+
+# ==================== WINDOW MANAGEMENT ====================
+# Killing windows
+bindsym $mod+w kill
 
 # Window focus moving
 bindsym $mod+Left focus left
@@ -51,13 +77,17 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Layout
+# Layout controls
 bindsym $mod+h split h
 bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+space floating toggle
 
-# Workspaces
+# Floating modifier
+floating_modifier $mod
+
+# ==================== WORKSPACES ====================
+# Workspace variables
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -69,6 +99,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# Switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
@@ -80,6 +111,7 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
+# Move container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
@@ -91,11 +123,7 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# Sway reload/restart/exit
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-
+# ==================== RESIZE MODE ====================
 # Resize Mode
 mode "resize" {
     bindsym j resize shrink width 10px
@@ -112,33 +140,14 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-default_border none
-default_floating_border none
+# ==================== SWAY SYSTEM CONTROLS ====================
+# Sway reload/restart/exit
+bindsym $mod+Shift+c reload
 
-# Extra App Shortcuts
-bindsym $mod1+w exec --no-startup-id .local/bin/wpsel
-bindsym $mod1+n exec --no-startup-id .local/bin/notes-manager
-bindsym $mod1+e exec --no-startup-id .local/bin/e-book-manager
-bindsym $mod1+a exec --no-startup-id .local/bin/sink_sel.sh
-bindsym $mod1+b exec --no-startup-id .local/bin/rofi-bluetooth
-
-bindsym $mod1+c exec --no-startup-id alacritty -e cmus &
-
-# Gaps (gaps are supported in sway)
-gaps inner 10
-gaps outer 0
-
+# ==================== WINDOW RULES ====================
 # Window rules (class -> app_id)
 for_window [app_id="io.github.seadve.Mousai"] floating enable
 for_window [app_id="dev.mufeed.Wordbook"] floating enable
 for_window [app_id="org.gnome.Nautilus"] floating enable
 for_window [app_id="Alacritty"] floating enable
 for_window [app_id="Alacritty"] resize set 1200px 800px
- 
-exec --no-startup-id /usr/bin/kdeconnectd
-
-input "type:pointer" {
-    accel_profile "flat"   # Disable acceleration (optional)
-    pointer_accel 0.5     # Sensitivity (adjust as needed)
-
-}

@@ -1,5 +1,4 @@
 .workspaces {
-    padding-top: 8px;
     color: @color0;
     background-color: @color0;
     border-radius: 12px;
@@ -7,23 +6,22 @@
 }
 
 .workspace {
-    font-size: 20px;
+    font-size: 15px;
     padding: 8px 12px;
     margin: 0px 0;
     border-radius: 8px;
     color: black;
     background: transparent;
-    transition: all 0.2s ease;
+    transition: all 0.8s ease;
 }
-
 
 .workspace.empty {
     background-color: @color0;
-    color: @color5;
+    color: @color8;
 }
 
 .workspace.occupied {
-    color: @cursor;
+    color: @color5;
 }
 
 .workspace.visible {
@@ -31,10 +29,10 @@
 }
 
 .workspace.focused {
-    color: @color1;
+    color: @color5;
     background-color: @color0;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .workspace:hover {

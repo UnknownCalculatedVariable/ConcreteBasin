@@ -1,7 +1,0 @@
-.image {
-	background-color: @color0;
-}
-.album {
-	background-color: @color0;
-}
-

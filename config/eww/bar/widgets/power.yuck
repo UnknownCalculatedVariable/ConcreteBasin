@@ -22,3 +22,7 @@
           (button :class "buttonres" :tooltip "Restart" :onclick "reboot" "")))
       ;; Always-visible shutdown button
       (button :class "shutbutton" :tooltip "Shutdown" :onclick "shutdown now" ""))))
+
+
+
+
