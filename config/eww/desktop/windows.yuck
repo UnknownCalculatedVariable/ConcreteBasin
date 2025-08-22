@@ -14,10 +14,10 @@
 (defwindow album 
 :monitor 0
 :geometry (geometry
-     :x "11" 
-     :y "140" 
-     :width "407px" 
-     :height "400px" 
+     :x "10" 
+     :y "10" 
+     :width "210px" 
+     :height "210px" 
      :anchor "top right")
 :focusable false
 :exclusive false

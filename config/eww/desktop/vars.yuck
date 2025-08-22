@@ -12,4 +12,4 @@
 
 (deflisten album 
     :initial ""
-    'desktop/scripts/album.sh')
+    'desktop/scripts/album-cmus.sh')

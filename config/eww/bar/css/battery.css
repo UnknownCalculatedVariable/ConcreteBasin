@@ -1,20 +1,21 @@
 .battery {
-      background-color: #19173C;
-      border-top-right-radius: 100px;
-    border-top-left-radius: 100px;
+      	background-color: #19173C;
+      	border-top-right-radius: 100px;
+    	border-top-left-radius: 100px;
 }
 
 .battbtn {
-   background-color: @color0;
-            color: @foreground ;
+   	background-color: @color0;
+        color: @foreground ;
   	font-size: 19px;
         border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
+	border-top-left-radius: 10px;
+	font-family: "JetBrainsMono Nerd Font Mono";
 }
 
 .battery-info {
-    color: @foreground;
-    font-size: 4px;
+    	color: @foreground;
+    	font-size: 4px;
 }
 
 .batC {

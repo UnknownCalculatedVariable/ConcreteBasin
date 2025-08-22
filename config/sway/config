@@ -19,6 +19,7 @@ gaps outer 0
 # Startup applications and session commands (update as needed for Wayland-compatible apps)
 exec --no-startup-id dex --autostart --environment sway
 exec --no-startup-id zen-browser 
+exec --no-startup-id mpDris2 & 
 exec --no-startup-id rm ~/ly-session.log
 exec --no-startup-id xss-lock --transfer-sleep-lock -- swaylock --nofork
 exec --no-startup-id nm-applet
@@ -26,7 +27,7 @@ exec --no-startup-id nm-applet
 # Compositor and utilities
 exec --no-startup-id swww-daemon
 exec --no-startup-id wal -i ~/.config/i3/def
-exec --no-startup-id eww open side
+exec --no-startup-id eww open-many side album
 exec --no-startup-id mako
 exec --no-startup-id /usr/bin/kdeconnectd
 

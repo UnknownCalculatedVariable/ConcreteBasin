@@ -6,9 +6,9 @@
        :valign "end"
        :halign "center"
     (vertical-clock)
-;;    (batt1)
+    (battery)
     (utils)
     (music)
-    (brigM)
-    (volum)
+;;    (brigM)
+;;    (volum)
     (power)))

@@ -12,6 +12,7 @@
     :halign "center"
     :text "${second}  ")))
 
+;;Album literal which has the code from album extractor
 (defwidget album []
 (literal :content album))
 

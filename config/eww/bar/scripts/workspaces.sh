@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Config - set your icons here
-active_icon=""    # Icon for focused workspace
-inactive_icon=""  # Icon for inactive workspaces
+active_icon="1"    # Icon for focused workspace
+inactive_icon="0"  # Icon for inactive workspaces
 
 workspaces() {
     # Get all existing workspaces
@@ -12,7 +12,7 @@ workspaces() {
     local tree=$(swaymsg -t get_tree)
 
     # Start widget container
-    echo -n "(box :class \"workspaces\" :orientation \"v\" :space-evenly false :spacing 4"
+    echo -n "(box :class \"workspaces\" :orientation \"v\" :space-evenly false :spacing 1"
 
     # Get all workspace numbers, sorted
     local ws_numbers=($(echo "$workspaces" | jq -r '.[].num' | sort -n))

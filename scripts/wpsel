@@ -129,6 +129,6 @@ if [[ -f "$selected_wallpaper" ]]; then
     	sleep 0.2
     	( wal -i "$selected_wallpaper" >/dev/null 2>&1 ) &
 	killall eww
-	eww open-many side 
+	eww open-many side album 
 fi
 
