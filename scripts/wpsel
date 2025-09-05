@@ -130,5 +130,8 @@ if [[ -f "$selected_wallpaper" ]]; then
     	( wal -i "$selected_wallpaper" >/dev/null 2>&1 ) &
 	killall eww
 	eww open-many side album 
+	/home/maps/Projects/git/vicinae/build/vicinae/vicinae vicinae"://theme/set/pywal-theme"
+	sleep 1
+	python ~/.local/bin/wal.py
 fi
 

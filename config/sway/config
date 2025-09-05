@@ -19,6 +19,7 @@ gaps outer 0
 # Startup applications and session commands (update as needed for Wayland-compatible apps)
 exec --no-startup-id dex --autostart --environment sway
 exec --no-startup-id zen-browser 
+exec --no-startup-id vicinae server 
 exec --no-startup-id mpDris2 & 
 exec --no-startup-id rm ~/ly-session.log
 exec --no-startup-id xss-lock --transfer-sleep-lock -- swaylock --nofork
@@ -43,6 +44,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Brightness control keybindings (using light or brightnessctl)
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+bindsym F11 exec playerctl previous
+bindsym F12 exec playerctl next
 
 # ==================== APPLICATION LAUNCHERS ====================
 # Launch applications
@@ -61,6 +64,7 @@ bindsym $mod1+e exec --no-startup-id .local/bin/e-book-manager
 bindsym $mod1+a exec --no-startup-id .local/bin/sink_sel.sh
 bindsym $mod1+b exec --no-startup-id .local/bin/rofi-bluetooth
 bindsym $mod1+c exec --no-startup-id alacritty -e cmus &
+bindsym $mod1+Tab exec --no-startup-id vicinae "vicinae://theme/set/pywal-theme?openWindow=true"
 
 # ==================== WINDOW MANAGEMENT ====================
 # Killing windows

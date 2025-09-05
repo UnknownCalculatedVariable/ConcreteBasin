@@ -1,0 +1,19 @@
+{
+    "faviconService": "twenty",
+    "font": {
+        "size": 10
+    },
+    "popToRootOnClose": true,
+    "rootSearch": {
+        "searchFiles": true
+    },
+    "theme": {
+        "iconTheme": "candy-icons",
+        "name": "pywal-theme.json"
+    },
+    "window": {
+        "csd": true,
+        "opacity": 0.95,
+        "rounding": 10
+    }
+}

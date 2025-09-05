@@ -20,7 +20,7 @@ else
 fi
 
 # Copy specified config directories
-for dir in eww alacritty sway mako rofi; do
+for dir in eww alacritty sway mako rofi vicinae; do
     if [ -d "$CONFIG_SRC/$dir" ]; then
         cp -r "$CONFIG_SRC/$dir" "$CONFIG_DEST/"
         echo "Copied $dir to config"

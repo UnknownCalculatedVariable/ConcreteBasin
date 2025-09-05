@@ -29,18 +29,18 @@ get_battery_status() {
 
 # Nerd Font battery icons for discharging
 BATTERY_ICONS=(
-    "󰂎 "  # 0-2% - nf-md-battery_outline
-    "󰁺 "  # 3-8% - nf-md-battery_10
-    "󰁻 "  # 9-18% - nf-md-battery_20
-    "󰁼 "  # 19-28% - nf-md-battery_30
-    "󰁽 "  # 29-38% - nf-md-battery_40
-    "󰁾 "  # 39-48% - nf-md-battery_50
-    "󰁿 "  # 49-58% - nf-md-battery_60
-    "󰂀 "  # 59-68% - nf-md-battery_70
-    "󰂁 "  # 69-78% - nf-md-battery_80
-    "󰂂 "  # 79-88% - nf-md-battery_90
-    "󰁹 "  # 89-98% - nf-md-battery_90
-    "󰂄 "  # 99-100% - nf-md-battery
+    "󰂎"  # 0-2% - nf-md-battery_outline
+    "󰁺"  # 3-8% - nf-md-battery_10
+    "󰁻"  # 9-18% - nf-md-battery_20
+    "󰁼"  # 19-28% - nf-md-battery_30
+    "󰁽"  # 29-38% - nf-md-battery_40
+    "󰁾"  # 39-48% - nf-md-battery_50
+    "󰁿"  # 49-58% - nf-md-battery_60
+    "󰂀"  # 59-68% - nf-md-battery_70
+    "󰂁"  # 69-78% - nf-md-battery_80
+    "󰂂"  # 79-88% - nf-md-battery_90
+    "󰁹"  # 89-98% - nf-md-battery_90
+    "󰂄"  # 99-100% - nf-md-battery
 )
 
 # Nerd Font charging battery icons
