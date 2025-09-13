@@ -45,18 +45,18 @@ BATTERY_ICONS=(
 
 # Nerd Font charging battery icons
 CHARGING_ICONS=(
-    "󰢟"  # 0-2% - nf-md-battery_charging_outline
-    "󰢜"  # 3-8% - nf-md-battery_charging_10
-    "󰂆"  # 9-18% - nf-md-battery_charging_20
-    "󰂇"  # 19-28% - nf-md-battery_charging_30
-    "󰂈"  # 29-38% - nf-md-battery_charging_40
-    "󰢝"  # 39-48% - nf-md-battery_charging_50
-    "󰢞"  # 49-58% - nf-md-battery_charging_60
-    "󰂉"  # 59-68% - nf-md-battery_charging_70
-    "󰂊"  # 69-78% - nf-md-battery_charging_80
-    "󰂋"  # 79-88% - nf-md-battery_charging_90
-    "󰂅"  # 89-98% - nf-md-battery_charging_90
-    "󰂄"  # 99-100% - nf-md-battery_charging_100
+    "󰢟"   # 0-2% - nf-md-battery_charging_outline
+    "󰢜"   # 3-8% - nf-md-battery_charging_10
+    "󰢜"   # 9-18% - nf-md-battery_charging_20
+    "󰂆"   # 19-28% - nf-md-battery_charging_30
+    "󰂇"   # 29-38% - nf-md-battery_charging_40
+    "󰢝"   # 39-48% - nf-md-battery_charging_50
+    "󰂈"   # 49-58% - nf-md-battery_charging_60
+    "󰢞"   # 59-68% - nf-md-battery_charging_70
+    "󰂉"   # 69-78% - nf-md-battery_charging_80
+    "󰂊"   # 79-88% - nf-md-battery_charging_90
+    "󰂋"   # 89-100% - nf-md-battery_charging_100
+    "󰂅"   # 100% - nf-md-battery_charging_100
 )
 
 # Function to get the icon index based on battery percentage

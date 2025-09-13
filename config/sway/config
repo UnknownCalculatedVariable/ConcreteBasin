@@ -19,6 +19,8 @@ gaps outer 0
 # Startup applications and session commands (update as needed for Wayland-compatible apps)
 exec --no-startup-id dex --autostart --environment sway
 exec --no-startup-id zen-browser 
+exec --no-startup-id sudo systemctl start docker 
+exec --no-startup-id wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json" 
 exec --no-startup-id vicinae server 
 exec --no-startup-id mpDris2 & 
 exec --no-startup-id rm ~/ly-session.log
@@ -154,5 +156,4 @@ bindsym $mod+Shift+c reload
 for_window [app_id="io.github.seadve.Mousai"] floating enable
 for_window [app_id="dev.mufeed.Wordbook"] floating enable
 for_window [app_id="org.gnome.Nautilus"] floating enable
-for_window [app_id="Alacritty"] floating enable
-for_window [app_id="Alacritty"] resize set 1200px 800px
+for_window [app_id="io.github.mpobaschnig.Vaults"] floating enable
