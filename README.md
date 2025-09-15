@@ -68,11 +68,9 @@ ConcreteBasin is a personalized desktop environment configuration for Linux, foc
 The `scripts` directory contains various utility scripts:
 
 -   `bckp`: Backs up the configuration files to the repository.
--   `battery-warning`: Displays a warning when the battery is low.
 -   `e-book-manager`: A `rofi`-based e-book browser.
 -   `mk_eww`: A helper script to create new `eww` widgets.
 -   `notes-manager`: A `rofi`-based note-taking helper for Obsidian.
 -   `sink_sel.sh`: A `rofi`-based audio output selector.
--   `wal`: A wrapper for `pywal`.
 -   `wpsel`: A `rofi`-based wallpaper selector.
 
