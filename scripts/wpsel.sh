@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# ==============================
+# Wallpaper Selector with swww
+# ==============================
+
 # Configuration
 WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
 CACHE_FILE="$HOME/.cache/wallpaper_index.txt"
@@ -9,14 +13,14 @@ THUMBNAIL_SIZE="200x200"
 GRID_ROWS=2
 GRID_COLS=4
 
-# Ensure dependencies are installed
+# Ensure dependencies
 command -v convert >/dev/null || { notify-send "ImageMagick 'convert' is not installed."; exit 1; }
 command -v swww >/dev/null || { notify-send "swww is not installed."; exit 1; }
 
-# Create directories if they don't exist
+# Make sure thumbnail cache exists
 mkdir -p "$THUMBNAIL_DIR"
 
-# Function to generate or get square thumbnail path
+# Generate or fetch thumbnail
 get_thumbnail() {
     local wallpaper="$1"
     local thumb_name="$(echo "$wallpaper" | md5sum | cut -d ' ' -f1).jpg"
@@ -33,7 +37,7 @@ get_thumbnail() {
     echo "$thumb_path"
 }
 
-# Function to show folder selection
+# Select a folder
 select_folder() {
     declare -a folders=("All Wallpapers")
     while IFS= read -r -d $'\0' folder; do
@@ -46,7 +50,7 @@ select_folder() {
         -config "$ROFI_CONFIG"
 }
 
-# Function to show wallpaper selection from a folder with thumbnails
+# Select wallpaper with thumbnails
 select_wallpaper() {
     local folder="$1"
     declare -a WALLPAPER_PATHS=()
@@ -83,14 +87,16 @@ select_wallpaper() {
     echo "$selected_index"
 }
 
-# Main execution
+# ===================
+# Main Execution
+# ===================
 SELECTED_FOLDER=$(select_folder)
 [[ -z "$SELECTED_FOLDER" ]] && exit 0
 
 SELECTED_INDEX=$(select_wallpaper "$SELECTED_FOLDER")
 [[ -z "$SELECTED_INDEX" ]] && exit 0
 
-# Get the wallpaper list again
+# Build wallpaper list again
 if [[ "$SELECTED_FOLDER" == "All Wallpapers" ]]; then
     mapfile -d '' -t WALLPAPER_PATHS < <(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | sort -z)
 else
@@ -100,38 +106,42 @@ fi
 selected_wallpaper="${WALLPAPER_PATHS[$SELECTED_INDEX]}"
 [[ -z "$selected_wallpaper" ]] && echo "No wallpaper selected or index invalid" >&2 && exit 1
 
-# Apply the wallpaper
+# ===================
+# Apply Wallpaper
+# ===================
 if [[ -f "$selected_wallpaper" ]]; then
     echo "$SELECTED_INDEX" > "$CACHE_FILE"
 
-    # Blazing fast transition options optimized for Sway
+    # Random animation
+    ANIMATIONS=("simple" "fade" "wipe" "wave" "outer" "grow" "any")
+    RANDOM_ANIM=${ANIMATIONS[$RANDOM % ${#ANIMATIONS[@]}]}
+
     TRANSITION_OPTS=(
-        --transition-type simple
-        --transition-fps 144
-        --transition-duration 0.5
-        --transition-step 255
-        --transition-bezier 0.1,0.8,0.1,1
+        --transition-type "$RANDOM_ANIM"
+        --transition-fps 60
+        --transition-duration 0.8
+        --transition-bezier 0.4,0.2,0.0,1.0
     )
 
-    # Initialize swww if not running
+    # Start daemon if needed
     if ! pgrep -x "swww-daemon" >/dev/null; then
         swww init
-        sleep 0.1  # Minimal delay
+        sleep 0.1
     fi
-    
-    # Apply wallpaper with optimized transitions
+
+    # Apply wallpaper with random animation
     swww img "$selected_wallpaper" "${TRANSITION_OPTS[@]}"
 
-    # Lightweight notification
-    notify-send -t 1000 "Wallpaper" "$(basename "$selected_wallpaper")"
+    # Notify
+    notify-send -t 1000 "Wallpaper Set" "Animation: $RANDOM_ANIM → $(basename "$selected_wallpaper")"
 
-    # Apply colors (async to avoid blocking)
-    	sleep 0.2
-    	( wal -i "$selected_wallpaper" >/dev/null 2>&1 ) &
-	killall eww
-	eww open-many side album 
-	/home/maps/Projects/git/vicinae/build/vicinae/vicinae vicinae"://theme/set/pywal-theme"
-	sleep 1
-	python ~/.local/bin/wal.py
+    # Reapply pywal colors + widgets
+    sleep 0.2
+    ( wal -i "$selected_wallpaper" >/dev/null 2>&1 ) &
+    killall eww
+    eww open-many side album 
+    /home/maps/Projects/git/vicinae/build/vicinae/vicinae vicinae"://theme/set/pywal-theme"
+    sleep 1
+    python ~/.local/bin/wal.py
 fi
 
