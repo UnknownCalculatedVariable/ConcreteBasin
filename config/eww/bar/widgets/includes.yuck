@@ -10,3 +10,4 @@
 (include "bar/widgets/volum.yuck")
 (include "bar/widgets/workspaces.yuck")
 (include "bar/widgets/screenshot_selector.yuck")
+(include "bar/widgets/wifi.yuck")

@@ -1,0 +1,9 @@
+.wifi {
+	background-color: @color0;
+	color: @foreground;
+	font-size: 20px;
+}
+
+.wifi-button {
+	background-color: @color0;
+}

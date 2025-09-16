@@ -11,7 +11,7 @@ VAULT_DIR="$HOME/Notes/ThinkDock"
 VAULT_NAME="ThinkDock"  # Must match your Obsidian vault name
 DAILY_NOTES_DIR="$VAULT_DIR/Notes/Daily"
 EDITOR_CMD="vim"
-TERMINAL_CMD="alacritty"
+TERMINAL_CMD="kitty"
 OBSIDIAN_CMD="obsidian"
 ROFI_CONFIG="$HOME/.config/rofi/config.rasi"
 

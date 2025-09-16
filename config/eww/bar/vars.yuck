@@ -15,5 +15,7 @@
 (deflisten cpuV :initial "" "bar/scripts/cpuF.sh")
 (deflisten workspacesS :initial "" "bar/scripts/workspaces.sh")
 (deflisten play-icon :initial "" "bar/scripts/play-stat.sh")
+(deflisten wifi-icon :initial "" "bar/scripts/wifi-icon.sh")
 (deflisten battery-icon :initial "" "bar/scripts/battery-icon.sh")
 (defpoll date :interval "14h" 'date +%d/%m/%y')
+
