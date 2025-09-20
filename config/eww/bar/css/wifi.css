@@ -6,4 +6,17 @@
 
 .wifi-button {
 	background-color: @color0;
+    transition: all 0.3s ease-in-out;
+}
+
+.wifi-button:hover {
+    color: @color4;
+}
+
+.wifi-button.disconnected {
+    color: @color1;
+}
+
+.wifi-button.off {
+    color: @color1;
 }

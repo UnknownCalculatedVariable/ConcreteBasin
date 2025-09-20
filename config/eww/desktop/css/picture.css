@@ -1,0 +1,11 @@
+.music {
+	background-color:@color0; 
+}
+
+.picture {
+	background-color: transparent;
+}
+
+.music_button {
+	background-color:@color0;
+}

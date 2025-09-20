@@ -24,4 +24,15 @@
 :stacking "bg"
 (alb))
 
-
+(defwindow music  
+:monitor 0
+:geometry ( geometry
+      :x "0"
+      :y "10"
+      :width "140px"
+      :height "40px"
+      :anchor "top center")
+:focusable false
+:exclusive false
+:stacking "fg"
+(picture))

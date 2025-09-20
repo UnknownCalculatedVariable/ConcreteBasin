@@ -13,3 +13,11 @@
 (deflisten album 
     :initial ""
     'desktop/scripts/album-cmus.sh')
+
+(deflisten music-icon 
+    :initial ""
+    'desktop/scripts/music/play-stat.sh')
+
+(deflisten music-album
+    :initial ""
+    'desktop/scripts/music/album-top.sh')
