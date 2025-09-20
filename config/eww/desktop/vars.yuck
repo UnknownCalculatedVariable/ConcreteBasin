@@ -21,3 +21,7 @@
 (deflisten music-album
     :initial ""
     'desktop/scripts/music/album-top.sh')
+
+(deflisten music-progress
+    :initial ""
+    'desktop/scripts/music/cmus-progress.sh')

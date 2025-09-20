@@ -1,0 +1,11 @@
+[Unit]
+Description=Watch cmus and toggle eww music widget
+After=graphical.target
+
+[Service]
+ExecStart=%h/.local/bin/cmus-eww-watcher.sh
+Restart=always
+
+[Install]
+WantedBy=default.target
+

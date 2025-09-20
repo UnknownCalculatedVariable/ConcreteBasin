@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # ==============================
 # Wallpaper Selector with swww
@@ -23,7 +24,8 @@ mkdir -p "$THUMBNAIL_DIR"
 # Generate or fetch thumbnail
 get_thumbnail() {
     local wallpaper="$1"
-    local thumb_name="$(echo "$wallpaper" | md5sum | cut -d ' ' -f1).jpg"
+    local thumb_name
+    thumb_name="$(echo "$wallpaper" | md5sum | cut -d ' ' -f1).jpg"
     local thumb_path="$THUMBNAIL_DIR/$thumb_name"
 
     if [[ ! -f "$thumb_path" ]]; then
@@ -75,7 +77,7 @@ select_wallpaper() {
         -selected-row "$CURRENT_INDEX" \
         -show-icons \
         -theme-str 'entry { enabled: false; }' \
-        -theme-str 'listview { lines: '$GRID_ROWS'; columns: '$GRID_COLS'; }' \
+        -theme-str "listview { lines: $GRID_ROWS; columns: $GRID_COLS; }" \
         -theme-str 'element { orientation: vertical; children: [ element-icon ]; }' \
         -theme-str 'element-icon { size: 200px; border-radius: 5px; }' \
         -kb-row-up "Up" \
@@ -103,8 +105,12 @@ else
     mapfile -d '' -t WALLPAPER_PATHS < <(find "$WALLPAPER_DIR/$SELECTED_FOLDER" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.gif" \) -print0 | sort -z)
 fi
 
-selected_wallpaper="${WALLPAPER_PATHS[$SELECTED_INDEX]}"
-[[ -z "$selected_wallpaper" ]] && echo "No wallpaper selected or index invalid" >&2 && exit 1
+if [[ "$SELECTED_INDEX" =~ ^[0-9]+$ ]] && [[ "$SELECTED_INDEX" -lt "${#WALLPAPER_PATHS[@]}" ]]; then
+    selected_wallpaper="${WALLPAPER_PATHS[$SELECTED_INDEX]}"
+else
+    echo "Invalid selection"
+    exit 1
+fi
 
 # ===================
 # Apply Wallpaper
@@ -138,10 +144,20 @@ if [[ -f "$selected_wallpaper" ]]; then
     # Reapply pywal colors + widgets
     sleep 0.2
     ( wal -i "$selected_wallpaper" >/dev/null 2>&1 ) &
+
+    # Ensure eww daemon is running
+    if ! pgrep -x eww >/dev/null; then
+        eww daemon
+        sleep 0.2
+    fi
+
+    # Reload main widgets
     killall eww
-    eww open-many side album 
-    /home/maps/Projects/git/vicinae/build/vicinae/vicinae vicinae"://theme/set/pywal-theme"
-    sleep 1
-    python ~/.local/bin/wal.py
+    eww open-many side album
+
+    # If cmus is active, also reopen music widget
+    if pgrep -x cmus >/dev/null; then
+        eww open-many music music-progress
+    fi
 fi
 

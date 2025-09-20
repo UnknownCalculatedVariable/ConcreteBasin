@@ -1,11 +1,28 @@
 .music {
-	background-color:@color0; 
+    background-color:transparent; 
+}
+.picture {
+    background-color: @color0;
+}
+.music_button {
+    background-color:transparent;
+    border-radius: 0;
+    padding: 4;
 }
 
-.picture {
+.music-progress{
+	background-color: transparent;}
+
+.picture-progress {
 	background-color: transparent;
 }
-
-.music_button {
-	background-color:@color0;
+.music-progress-bar > trough {
+  background-color: @color7;   /* muted background */
+  border-radius: 0px;
 }
+
+.music-progress-bar > trough > progress {
+  background-color: @color0;   /* strong highlight for progress */
+  border-radius: 0px;
+}
+

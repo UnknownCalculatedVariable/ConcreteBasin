@@ -10,7 +10,7 @@ while true; do
         ffmpeg -y -i "$FILE" -an -vcodec copy "$COVER_PATH" 2>/dev/null
 
         if [[ -f "$COVER_PATH" ]]; then
-            echo "(image :path \"$COVER_PATH\" :image-width 140 :image-height 40 :class \"image-image\")"
+		echo "(button :onclick \"desktop/scripts/music/cmus-workspace.sh\" :class \"music_button\" (image :path \"$COVER_PATH\" :image-width 110 :image-height 30 :class \"image-image\"))"
         fi
 
         LAST_FILE="$FILE"

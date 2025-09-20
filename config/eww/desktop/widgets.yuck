@@ -34,3 +34,11 @@
     (button :class "music_button" :onclick "desktop/scripts/music/player_play_pause.sh" "${music-icon}")
     (button :class "music_button" :style "font-size:20px;" :onclick "playerctl previous" "󰒮")))
 
+(defwidget picture-progress []
+  (box :class "picture"
+       :valign "center"
+      (progress 
+        :value "${music-progress}"
+        :orientation "h"
+        :class "music-progress-bar"
+        )))
