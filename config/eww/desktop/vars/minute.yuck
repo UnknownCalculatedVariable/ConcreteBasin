@@ -1,0 +1,3 @@
+(deflisten minute 
+    :initial ""  
+    'desktop/scripts/minute.sh' )

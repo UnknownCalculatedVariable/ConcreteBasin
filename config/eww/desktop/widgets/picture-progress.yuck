@@ -1,0 +1,7 @@
+(defwidget picture-progress []
+  (box :class "picture"
+       :valign "center"
+      (progress 
+        :value "${music-progress}"
+        :orientation "h"
+        :class "music-progress-bar")))

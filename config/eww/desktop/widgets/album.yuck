@@ -1,0 +1,7 @@
+(defwidget album [] 
+(box :class "image" 
+     :halign "center" 
+     :valign "center" 
+(literal :content album)))
+
+

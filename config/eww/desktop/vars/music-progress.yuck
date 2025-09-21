@@ -1,0 +1,3 @@
+(deflisten music-progress
+    :initial ""
+    'desktop/scripts/music/cmus-progress.sh')

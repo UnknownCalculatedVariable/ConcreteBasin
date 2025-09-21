@@ -1,0 +1,3 @@
+(deflisten album 
+    :initial ""
+    'desktop/scripts/album-cmus.sh')

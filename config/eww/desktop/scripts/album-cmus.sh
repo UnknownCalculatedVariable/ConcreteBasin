@@ -10,7 +10,7 @@ while true; do
         ffmpeg -y -i "$FILE" -an -vcodec copy "$COVER_PATH" 2>/dev/null
 
         if [[ -f "$COVER_PATH" ]]; then
-            echo "(box :class \"image\" :halign \"center\" :valign \"center\" (image :path \"$COVER_PATH\" :image-width 200 :image-height 200 :class \"image-image\"))"
+            echo "(image :path \"$COVER_PATH\" :image-width 200 :image-height 200 :class \"image-image\")"
         fi
 
         LAST_FILE="$FILE"

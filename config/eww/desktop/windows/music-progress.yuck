@@ -1,0 +1,12 @@
+(defwindow music-progress 
+:monitor 0
+:geometry ( geometry
+      :x "0"
+      :y "50"
+      :width "140px"
+      :height "8px"
+      :anchor "top center")
+:focusable false
+:exclusive false
+:stacking "fg"
+(picture-progress))

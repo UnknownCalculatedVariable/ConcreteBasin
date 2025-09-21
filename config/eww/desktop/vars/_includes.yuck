@@ -1,0 +1,6 @@
+(include "desktop/vars/album.yuck")
+(include "desktop/vars/music-icon.yuck")
+(include "desktop/vars/music-album.yuck")
+(include "desktop/vars/music-progress.yuck")
+(include "desktop/vars/hour.yuck")
+(include "desktop/vars/minute.yuck")

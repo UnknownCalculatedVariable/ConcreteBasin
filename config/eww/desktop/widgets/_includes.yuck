@@ -1,0 +1,3 @@
+(include "desktop/widgets/album.yuck")
+(include "desktop/widgets/picture.yuck")
+(include "desktop/widgets/picture-progress.yuck")
