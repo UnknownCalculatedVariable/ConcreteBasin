@@ -1,6 +1,6 @@
 (defwidget power-menu []
-  (eventbox :onhover "eww update power=true" 
-            :onhoverlost "eww update power=false"
+  (eventbox :onhover "eww update power-menu-revealer=true" 
+            :onhoverlost "eww update power-menu-revealer=false"
     (box :orientation "v" 
          :space-evenly "false" 
          :vexpand "false" 
@@ -8,7 +8,7 @@
          :valign "end"
       ;; Revealer for power options
       (revealer :transition "slidedown" 
-                :reveal power 
+                :reveal power-menu-revealer
                 :duration "700ms"
         (box :orientation "v" 
              :space-evenly "false"

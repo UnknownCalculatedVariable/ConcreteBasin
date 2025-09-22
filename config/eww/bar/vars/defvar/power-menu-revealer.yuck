@@ -1,1 +1,1 @@
-(defvar power false)
+(defvar power-menu-revealer false)

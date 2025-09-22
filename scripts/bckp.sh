@@ -29,6 +29,16 @@ for dir in eww kitty sway mako rofi systemd; do
     fi
 done
 
+# Copy dotfiles (.zshrc and .vimrc)
+for file in .zshrc .vimrc; do
+    if [ -f "$HOME/$file" ]; then
+        cp "$HOME/$file" "$CONFIG_DEST/"
+        echo "Copied $file to config"
+    else
+        echo "Warning: $HOME/$file does not exist"
+    fi
+done
+
 # Handle scripts directory
 echo -e "\nProcessing scripts..."
 if [ -d "$SCRIPTS_DEST" ]; then
@@ -44,4 +54,3 @@ else
     echo "Warning: $SCRIPTS_SRC does not exist"
 fi
 
-echo -e "\nSync complete!"
