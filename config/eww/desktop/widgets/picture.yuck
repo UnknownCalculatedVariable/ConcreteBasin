@@ -7,7 +7,7 @@
    (literal :content music-album) 
     
     (button :class "music_button" :style "font-size:20px;" :onclick "playerctl next" "󰒭")
-    (button :class "music_button" :onclick "desktop/scripts/music/player_play_pause.sh" "${music-icon}")
+    (button :class "music_button" :onclick "desktop/scripts/music/toggle-player.sh" "${music-icon}")
     (button :class "music_button" :style "font-size:20px;" :onclick "playerctl previous" "󰒮")))
 
 

@@ -1,1 +1,1 @@
-(deflisten workspacesS :initial "" "bar/scripts/workspaces.sh")
+(deflisten workspacesS :initial "" "bar/scripts/get-workspaces.sh")

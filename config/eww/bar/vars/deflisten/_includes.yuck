@@ -2,3 +2,5 @@
 (include "bar/vars/deflisten/workspaces.yuck")
 (include "bar/vars/deflisten/wifi-icon.yuck")
 (include "bar/vars/deflisten/battery-icon.yuck")
+(include "bar/vars/deflisten/hour.yuck")
+(include "bar/vars/deflisten/minute.yuck")

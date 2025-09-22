@@ -1,3 +1,3 @@
 (deflisten music-icon 
     :initial ""
-    'desktop/scripts/music/play-stat.sh')
+    'desktop/scripts/music/get-play-icon.sh')

@@ -15,7 +15,7 @@
           ;; Music Recognition button
           (button :class "utility-button" :tooltip "Music Recognition" :onclick "flatpak run io.github.seadve.Mousai &" "󰁧")
           ;; Night Mode button
-          (button :class "utility-button" :tooltip "Night Mode" :onclick "bar/scripts/gammastep-toggle.sh" "󰃜")
+          (button :class "utility-button" :tooltip "Night Mode" :onclick "bar/scripts/toggle-gammastep.sh" "󰃜")
           ;; Color Picker button
           (button :class "utility-button" :tooltip "Color Picker" :onclick "wl-color-picker" "")
           ;; Screenshot button

@@ -1,3 +1,3 @@
 (deflisten music-album
     :initial ""
-    'desktop/scripts/music/album-top.sh')
+    'desktop/scripts/music/get-album-top.sh')

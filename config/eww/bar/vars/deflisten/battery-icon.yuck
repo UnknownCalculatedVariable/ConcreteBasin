@@ -1,1 +1,1 @@
-(deflisten battery-icon :initial "" "bar/scripts/battery-icon.sh")
+(deflisten battery-icon :initial "" "bar/scripts/get-battery-icon.sh")

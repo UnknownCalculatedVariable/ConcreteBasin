@@ -11,5 +11,5 @@
 (include "bar/widgets/utility-menu.yuck")
 (include "bar/widgets/vertical-clock.yuck")
 (include "bar/widgets/workspaces.yuck")
-(include "bar/widgets/screenshot_selector.yuck")
+(include "bar/widgets/screenshot-selector.yuck")
 (include "bar/widgets/wifi-indicator.yuck")

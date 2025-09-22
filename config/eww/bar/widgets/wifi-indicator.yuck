@@ -2,5 +2,5 @@
   (box :class "wifi"
     (button
       :class "wifi-button"
-      :onclick "bar/scripts/wifi-toggle.sh"
+      :onclick "bar/scripts/toggle-wifi.sh"
       "${wifi-icon}")))

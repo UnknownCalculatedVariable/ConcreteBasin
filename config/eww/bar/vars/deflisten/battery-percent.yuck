@@ -1,2 +1,2 @@
-(deflisten battery-percent :initial "" "bar/scripts/battery-percent.sh")
+(deflisten battery-percent :initial "" "bar/scripts/get-battery-percent.sh")
 

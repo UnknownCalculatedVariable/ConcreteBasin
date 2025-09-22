@@ -1,0 +1,6 @@
+(defwidget screenshot-menu []
+  (box :class "screenshot-menu"
+       :orientation "h"
+       :space-evenly true
+    (button :class "screenshot-button" :tooltip "Area Screenshot" :onclick "eww close screenshot && bar/scripts/do-screenshot-section.sh" "󰆞")
+    (button :class "screenshot-button" :tooltip "Full Screenshot" :onclick "eww close screenshot && bar/scripts/do-screenshot-full.sh" "󰹑")))
