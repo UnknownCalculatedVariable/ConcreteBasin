@@ -1,1 +1,0 @@
-(deflisten play-icon :initial "" "bar/scripts/play-stat.sh")

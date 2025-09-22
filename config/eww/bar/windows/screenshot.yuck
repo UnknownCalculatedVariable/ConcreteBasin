@@ -12,6 +12,6 @@
   :exclusive false   ; Prevents other windows from overlapping
   :stacking "fg"    ; Forces to stay in foreground
 
-  (ssCW)
+  (screenshot-menu)
 
 )

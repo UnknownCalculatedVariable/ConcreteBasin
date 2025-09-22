@@ -1,7 +1,6 @@
 (defwidget wifi-indicator []
   (box :class "wifi"
     (button
-      :class "wifi-button ${wifi-state}"
+      :class "wifi-button"
       :onclick "bar/scripts/wifi-toggle.sh"
-      :tooltip "${wifi-ssid}"
       "${wifi-icon}")))

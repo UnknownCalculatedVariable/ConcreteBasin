@@ -1,2 +1,0 @@
-(deflisten batteryP :initial "" "bar/scripts/battery.sh")
-
