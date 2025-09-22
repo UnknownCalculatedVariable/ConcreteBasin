@@ -30,7 +30,7 @@ for dir in eww kitty sway mako rofi systemd; do
 done
 
 # Copy dotfiles (.zshrc and .vimrc)
-for file in .zshrc .vimrc; do
+for file in .zshrc .vimrc .p10k.zsh; do
     if [ -f "$HOME/$file" ]; then
         cp "$HOME/$file" "$CONFIG_DEST/"
         echo "Copied $file to config"
