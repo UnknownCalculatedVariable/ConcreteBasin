@@ -1,0 +1,11 @@
+.battery {
+      	background-color: transparent;
+}
+
+.battery-button {
+	font-size: 19px;
+	color: @foreground;
+	font-family: "JetBrainsMono Nerd Font Mono";
+	background-color: transparent;
+	border-radius: 0px;
+}

@@ -1,0 +1,25 @@
+(defwidget utility-menu []
+  (eventbox :onhover "eww update utils=true" 
+            :onhoverlost "eww update utils=false"
+    (box :orientation "v" 
+         :space-evenly "false" 
+         :vexpand "false" 
+         :class "utility-menu" 
+         :valign "end"
+      ;; Utilities revealer
+      (revealer :transition "slideup" 
+                :reveal utils 
+                :duration "800ms"
+        (box :orientation "v" 
+             :space-evenly "false"
+          ;; Music Recognition button
+          (button :class "utility-button" :tooltip "Music Recognition" :onclick "flatpak run io.github.seadve.Mousai &" "󰁧")
+          ;; Night Mode button
+          (button :class "utility-button" :tooltip "Night Mode" :onclick "bar/scripts/gams.sh" "󰃜")
+          ;; Color Picker button
+          (button :class "utility-button" :tooltip "Color Picker" :onclick "bar/scripts/cp.sh" "")
+          ;; Screenshot button
+          (button :class "utility-button" :tooltip "Screenshot" :onclick "eww open --toggle screenshot" "")))
+      ;; Always-visible utility button
+      (label :class "utility-button" 
+             :text "󱁤"))))

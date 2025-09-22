@@ -1,0 +1,12 @@
+.power-menu {
+	 background-color: @color0;
+            color: @foreground ;
+    padding-top: 0px;
+}
+
+.power-button {
+	 background-color: @color0;
+            color: @foreground ;
+	font-size: 20px;
+	border-radius: 0px;
+}

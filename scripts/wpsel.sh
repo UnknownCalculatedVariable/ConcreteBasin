@@ -153,7 +153,7 @@ if [[ -f "$selected_wallpaper" ]]; then
 
     # Reload main widgets
     killall eww
-    eww open-many side album
+    eww open-many bar album
 
     # If cmus is active, also reopen music widget
     if pgrep -x cmus >/dev/null; then

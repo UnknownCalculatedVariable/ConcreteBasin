@@ -1,6 +1,0 @@
-(defwidget battery []
-  (box :class "battery" 
-       :halign "center"
-    (button :class "batC" 
-            :halign "center" 
-            :onclick "notify-send ${batteryP}%" "${battery-icon}"))) 

@@ -1,0 +1,13 @@
+.screenshot {
+    	background-color: transparent;
+        color: @foreground;}
+
+.screenshot-button {
+        background-color: transparent;
+        color: @foreground ;
+	font-size: 20px;
+	border-radius: 0px}
+
+.screenshot-menu {
+	background-color: @color0;}
+

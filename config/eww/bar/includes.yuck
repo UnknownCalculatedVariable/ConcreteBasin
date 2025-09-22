@@ -1,3 +1,0 @@
-(include "bar/widgets.yuck")
-(include "bar/windows.yuck")
-(include "bar/vars.yuck")

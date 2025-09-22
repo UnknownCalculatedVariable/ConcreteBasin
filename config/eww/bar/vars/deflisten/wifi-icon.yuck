@@ -1,0 +1,1 @@
+(deflisten wifi-icon :initial "" "bar/scripts/wifi-icon.sh")

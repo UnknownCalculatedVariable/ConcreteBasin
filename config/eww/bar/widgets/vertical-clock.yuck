@@ -2,5 +2,5 @@
   (box :orientation "v" 
        :class "vertical-clock" 
        :valign "center"
-    (label :tooltip "${date}" :class "clock-hour" :text hour)
-    (label :tooltip "${date}" :class "clock-min" :text minute)))
+    (label :tooltip "${date}" :class "vertical-clock-hour" :text hour)
+    (label :tooltip "${date}" :class "vertical-clock-min" :text minute)))

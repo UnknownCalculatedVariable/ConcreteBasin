@@ -1,0 +1,1 @@
+(deflisten wifi-state :initial "" "bar/scripts/wifi-state.sh")

@@ -5,12 +5,12 @@
     background-color: @color0;
 }
 
-.clock-hour {
+.vertical-clock-hour {
     color: @color11;
     font-size: 23px;
 }
 
-.clock-min {
+.vertical-clock-min {
     color: @color15;
     font-size: larger;
 }

@@ -1,0 +1,14 @@
+.utility-button {
+    	background-color: @color0;
+    	color: @foreground ;
+    	font-size: 20px;
+    	padding-bottom: 5px;
+    	padding-top: 5px;
+	border-radius: 0px;
+}
+
+.utility-menu {
+        background-color: @color0;
+        color: @foreground ;
+	font-size: 20px;
+}

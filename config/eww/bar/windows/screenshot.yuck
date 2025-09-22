@@ -1,0 +1,17 @@
+(defwindow screenshot 
+  :monitor 0  ; Display on first monitor (0-indexed)
+  
+  ;; Window positioning and size
+  :geometry (geometry :x "0px"          ; 4px from left edge
+                      :y "0"            ; Aligned to top
+                      :width "380px"      ; Fixed narrow width
+                      :height "200px"     ; Full screen height
+                      :anchor "center") ; Anchored left-center
+  
+  :focusable false  ; Cannot receive keyboard focus
+  :exclusive false   ; Prevents other windows from overlapping
+  :stacking "fg"    ; Forces to stay in foreground
+
+  (ssCW)
+
+)

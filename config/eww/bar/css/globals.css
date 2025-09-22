@@ -4,27 +4,4 @@
 
 
 
-.side {
-	background-color: @color0;
-	color: #e20e3e;  
 
-}
-
-.ssC {
-    background-color: transparent;
-            color: @foreground;
-            
-}
-
-.bat {
-	background-color: @color0;
-	color: @foreground;
-	padding-bottom: 10px;
-}
-
-.batC {
-	background-color: @color0;
-	color: @foreground;
-	padding-bottom: 10px;
-
-}

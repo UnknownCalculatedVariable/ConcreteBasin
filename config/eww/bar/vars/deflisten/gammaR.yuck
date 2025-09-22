@@ -1,0 +1,1 @@
+(deflisten gammaR :initial "" "bar/scripts/gammastat.sh")

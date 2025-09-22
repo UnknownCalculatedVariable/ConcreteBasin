@@ -1,0 +1,5 @@
+.bar {
+	background-color: @color0;
+	color: @foreground;  
+
+}

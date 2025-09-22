@@ -1,0 +1,18 @@
+(defwindow bar 
+  :monitor 0  ; Display on first monitor (0-indexed)
+  
+  ;; Window positioning and size
+  :geometry (geometry :x "4px"          ; 4px from left edge
+                      :y "0"            ; Aligned to top
+                      :width "45px"      ; Fixed narrow width
+                      :height "100%"     ; Full screen height
+                      :anchor "left center") ; Anchored left-center
+  
+  :focusable false  ; Cannot receive keyboard focus
+  :exclusive true   ; Prevents other windows from overlapping
+  :stacking "fg"    ; Forces to stay in foreground
+  
+  ;; The single contained widget - our bottom panel
+(bar))
+
+

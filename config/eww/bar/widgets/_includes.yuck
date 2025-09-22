@@ -1,0 +1,15 @@
+;; Layout Widgets
+
+(include "bar/widgets/layout/top.yuck")
+(include "bar/widgets/layout/bottom.yuck")
+(include "bar/widgets/layout/bar.yuck")
+
+;; Normal Widgets
+
+(include "bar/widgets/battery-indicator.yuck")
+(include "bar/widgets/power-menu.yuck")
+(include "bar/widgets/utility-menu.yuck")
+(include "bar/widgets/vertical-clock.yuck")
+(include "bar/widgets/workspaces.yuck")
+(include "bar/widgets/screenshot_selector.yuck")
+(include "bar/widgets/wifi-indicator.yuck")

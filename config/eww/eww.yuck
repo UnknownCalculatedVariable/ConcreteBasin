@@ -1,2 +1,2 @@
-(include "bar/includes.yuck")
+(include "bar/_includes.yuck")
 (include "desktop/_includes.yuck")

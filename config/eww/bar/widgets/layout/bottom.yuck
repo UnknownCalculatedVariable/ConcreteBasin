@@ -1,0 +1,12 @@
+(defwidget bottom []
+  (box :orientation "v" 
+       :class "bottom" 
+       :space-evenly "false" 
+       :vexpand "false" 
+       :valign "end"
+       :halign "center"
+    (vertical-clock)
+    (battery-indicator)
+    (utility-menu)
+    (wifi-indicator)
+    (power-menu)))
