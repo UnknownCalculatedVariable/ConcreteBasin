@@ -24,7 +24,7 @@ bindkey -v
 
 # Created by `pipx` on 2025-06-16 16:11:10
 export PATH="$PATH:/home/maps/.local/bin"
-alias v="vim"
+alias v="nvim"
 alias cma= "cmatrix -mxbosa"
 alias update="sudo pacman -Syu --noconfirm"
 alias d="sudo pacman -S"
