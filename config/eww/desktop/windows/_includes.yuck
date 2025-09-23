@@ -1,5 +1,7 @@
 (include "desktop/windows/album.yuck")
 (include "desktop/windows/music.yuck")
 (include "desktop/windows/music-progress.yuck")
+(include "desktop/windows/dock.yuck")
+
 
 
