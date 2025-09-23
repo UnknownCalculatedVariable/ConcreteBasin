@@ -13,6 +13,7 @@ vim.cmd [[
 
   Plug 'nvim-treesitter/nvim-treesitter'
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-tree/nvim-tree.lua'
   Plug 'elkowar/yuck.vim'
   Plug 'nvim-mini/mini.nvim'
@@ -20,9 +21,14 @@ vim.cmd [[
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'tamago324/lir.nvim'
   Plug 'windwp/nvim-autopairs'
+  Plug 'numToStr/FTerm.nvim'
+  Plug 'nvim-lualine/lualine.nvim'
 
   call plug#end()
 ]]
 
 require("config.lir")
 require("config.autopairs")
+require("config.fterm")
+require("config.telescope")
+require("config.lualine")

@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-require("keymaps")
-require("options")
+require("options") --Plugins first
 require("plugins")
+require("keymaps")
 
