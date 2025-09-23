@@ -23,6 +23,7 @@ vim.cmd [[
   Plug 'windwp/nvim-autopairs'
   Plug 'numToStr/FTerm.nvim'
   Plug 'nvim-lualine/lualine.nvim'
+  Plug('romgrk/barbar.nvim')
 
   call plug#end()
 ]]
@@ -32,3 +33,4 @@ require("config.autopairs")
 require("config.fterm")
 require("config.telescope")
 require("config.lualine")
+require("config.barbar")

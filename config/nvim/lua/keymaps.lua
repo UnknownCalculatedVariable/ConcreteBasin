@@ -14,3 +14,17 @@ vim.keymap.set('t', '<Esc>', function() require("FTerm").toggle() end, { noremap
 
 -- /FTerm
 
+-- Barbar
+
+-- Move between buffers
+vim.keymap.set("n", "<A-,>", "<Cmd>BufferPrevious<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<A-.>", "<Cmd>BufferNext<CR>", { noremap = true, silent = true })
+
+-- Re-order buffers
+vim.keymap.set("n", "<A-<>", "<Cmd>BufferMovePrevious<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<A->>", "<Cmd>BufferMoveNext<CR>", { noremap = true, silent = true })
+
+-- Close buffer
+vim.keymap.set("n", "<A-c>", "<Cmd>BufferClose<CR>", { noremap = true, silent = true })
+
+-- /Barbar
