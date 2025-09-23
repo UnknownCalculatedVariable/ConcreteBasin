@@ -19,8 +19,10 @@ vim.cmd [[
   Plug 'MeanderingProgrammer/render-markdown.nvim'
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'tamago324/lir.nvim'
+  Plug 'windwp/nvim-autopairs'
 
   call plug#end()
 ]]
 
-require("plugins.lir")
+require("config.lir")
+require("config.autopairs")
