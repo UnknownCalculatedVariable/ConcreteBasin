@@ -1,9 +1,7 @@
--- load settings
-require("settings")
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--- load keymaps
 require("keymaps")
-
--- load plugins
+require("options")
 require("plugins")
 

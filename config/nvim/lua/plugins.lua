@@ -1,46 +1,26 @@
--- bootstrap lazy
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+-- Bootstrap vim-plug if it's not installed
+local plug_path = vim.fn.stdpath("data") .. "/site/autoload/plug.vim"
+if vim.fn.empty(vim.fn.glob(plug_path)) > 0 then
   vim.fn.system({
-    "git", "clone", "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", lazypath,
+    "curl", "-fLo", plug_path, "--create-dirs",
+    "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   })
 end
-vim.opt.rtp:prepend(lazypath)
 
--- plugin list
-require("lazy").setup({
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-  { "nvim-lua/plenary.nvim" },
-  	{
-  	"folke/which-key.nvim",
-  	event = "VeryLazy",
-  	opts = {
-    	-- your configuration comes here
-    	-- or leave it empty to use the default settings
-    	-- refer to the configuration section below
-  	},
-  	keys = {
-   	 {
-      	"<leader>?",
-      	function()
-       	 require("which-key").show({ global = false })
-      	end,
-	      desc = "Buffer Local Keymaps (which-key)",
-	    },
-	    },
-	},
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    }
-  },
-  { "elkowar/yuck.vim" },
-  { "s1n7ax/nvim-terminal"},
-})
+-- Start vim-plug plugin section
+vim.cmd [[
+  call plug#begin(stdpath('data') . '/plugged')
 
+  Plug 'nvim-treesitter/nvim-treesitter'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-tree/nvim-tree.lua'
+  Plug 'elkowar/yuck.vim'
+  Plug 'nvim-mini/mini.nvim'
+  Plug 'MeanderingProgrammer/render-markdown.nvim'
+  Plug 'nvim-tree/nvim-web-devicons'
+  Plug 'tamago324/lir.nvim'
+
+  call plug#end()
+]]
+
+require("plugins.lir")
