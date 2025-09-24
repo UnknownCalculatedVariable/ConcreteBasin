@@ -10,7 +10,7 @@ IFS=$'\n\t'
 VAULT_DIR="$HOME/Notes/ThinkDock"
 VAULT_NAME="ThinkDock"  # Must match your Obsidian vault name
 DAILY_NOTES_DIR="$VAULT_DIR/Notes/Daily"
-EDITOR_CMD="vim"
+EDITOR_CMD="nvim"
 TERMINAL_CMD="kitty"
 OBSIDIAN_CMD="obsidian"
 ROFI_CONFIG="$HOME/.config/rofi/config.rasi"
@@ -118,20 +118,14 @@ create_note_interactive() {
 choose_editor() {
     local file_path="$1"
     local relative_path="${file_path#$VAULT_DIR/}"
-    local choice=$(echo -e "Obsidian\nVim (Markdown)\nCancel" | rofi -dmenu -p "Open with:" -config "$ROFI_CONFIG")
+    local choice=$(echo -e "Obsidian\nNeovim\nCancel" | rofi -dmenu -p "Open with:" -config "$ROFI_CONFIG")
     
     case "$choice" in
         Obsidian)
             xdg-open "obsidian://open?path=${file_path}&vault=${VAULT_NAME}" &
             ;;
-        "Vim (Markdown)")
-            # Open in Alacritty with Vim, using Markdown-friendly settings
-            $TERMINAL_CMD -e bash -c "vim -c 'set syntax=markdown' \
-                -c 'set conceallevel=2' \
-                -c 'set wrap' \
-                -c 'set linebreak' \
-                -c 'set nonumber' \
-                '$file_path'" &
+        Neovim)
+            $TERMINAL_CMD -e "$EDITOR_CMD" "$file_path" &
             ;;
         *)
             return
@@ -154,3 +148,4 @@ main() {
 }
 
 main "$@"
+

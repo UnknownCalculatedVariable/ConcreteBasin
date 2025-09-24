@@ -61,8 +61,8 @@ sections = {
 	extensions = { 'nvim-tree' },
 })
 
--- transparency override if using old pywal, shouldn't be needed with 16
--- vim.api.nvim_set_hl(0, "lualine_c_normal", { bg = "none" })
--- vim.api.nvim_set_hl(0, "lualine_c_inactive", { bg = "none" })
--- vim.api.nvim_set_hl(0, "lualine_x_normal", { bg = "none" })
--- vim.api.nvim_set_hl(0, "lualine_x_inactive", { bg = "none" })
+--transparency override if using old pywal, shouldn't be needed with 16
+--vim.api.nvim_set_hl(0, "lualine_c_normal", { bg = "none" })
+--vim.api.nvim_set_hl(0, "lualine_c_inactive", { bg = "none" })
+--vim.api.nvim_set_hl(0, "lualine_x_normal", { bg = "none" })
+--vim.api.nvim_set_hl(0, "lualine_x_inactive", { bg = "none" })

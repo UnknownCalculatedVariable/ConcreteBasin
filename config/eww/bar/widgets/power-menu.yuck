@@ -9,7 +9,7 @@
       ;; Revealer for power options
       (revealer :transition "slidedown" 
                 :reveal power-menu-revealer
-                :duration "700ms"
+                :duration "500ms"
         (box :orientation "v" 
              :space-evenly "false"
           ;; Sleep button
