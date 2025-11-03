@@ -125,7 +125,7 @@ choose_editor() {
             xdg-open "obsidian://open?path=${file_path}&vault=${VAULT_NAME}" &
             ;;
         Neovim)
-            $TERMINAL_CMD -e "$EDITOR_CMD" "$file_path" &
+            $TERMINAL_CMD -e env TERM=rxvt-256color "$EDITOR_CMD" "$file_path" &
             ;;
         *)
             return

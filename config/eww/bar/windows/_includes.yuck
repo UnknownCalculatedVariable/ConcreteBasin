@@ -1,2 +1,3 @@
 (include "bar/windows/bar.yuck")
 (include "bar/windows/screenshot.yuck")
+;;(include "bar/windows/battery-menu.yuck")

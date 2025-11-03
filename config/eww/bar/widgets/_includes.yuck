@@ -13,3 +13,4 @@
 (include "bar/widgets/workspaces.yuck")
 (include "bar/widgets/screenshot-selector.yuck")
 (include "bar/widgets/wifi-indicator.yuck")
+;;(include "bar/widgets/battery-menu.yuck")

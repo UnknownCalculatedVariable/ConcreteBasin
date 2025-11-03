@@ -1,3 +1,4 @@
+
 cat ~/.cache/wal/sequences
 nitch
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -33,6 +34,7 @@ alias ls="ls --color=always"
 alias ff="nitch"
 alias ch="chmod +x"
 alias tm="bash ~/.local/bin/timer.sh"
+alias nm="nemo ."
 source ~/.config/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

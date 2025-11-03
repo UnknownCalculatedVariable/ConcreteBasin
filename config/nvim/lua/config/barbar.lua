@@ -1,6 +1,6 @@
 vim.g.barbar_auto_setup = false -- disable auto-setup
 require("barbar").setup({
-  animation = false,
+  animation = true,
 
   -- Enable/disable current/total tabpages indicator (top right corner)
   tabpages = true,

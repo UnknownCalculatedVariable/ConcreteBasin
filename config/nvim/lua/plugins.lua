@@ -32,7 +32,12 @@ vim.cmd [[
   Plug 'hrsh7th/cmp-nvim-lua'      " neovim lua API completions
   Plug 'L3MON4D3/LuaSnip'          " snippet engine
   Plug 'saadparwaiz1/cmp_luasnip'  " snippet completions
+  Plug 'artoj/qmake-syntax-vim' 
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
+  Plug 'peterhoeg/vim-qml'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'peterhoeg/vim-qml'
+
 
   call plug#end()
 ]]
@@ -44,3 +49,5 @@ require("config.telescope")
 require("config.lualine")
 require("config.barbar")
 require("config.cmp")
+require("config.markdown")
+require("config.lsp")
