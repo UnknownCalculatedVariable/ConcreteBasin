@@ -6,7 +6,12 @@
         background-color: transparent;
         color: @foreground ;
 	font-size: 20px;
-	border-radius: 0px}
+	border-radius: 0px;
+}
+
+.screenshot-button:hover {
+	color: @color4;
+}
 
 .screenshot-menu {
 	background-color: @color0;}

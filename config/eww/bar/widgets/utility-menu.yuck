@@ -21,6 +21,7 @@
           ;; Screenshot button
           (button :class "utility-button" :tooltip "Screenshot" :onclick "eww open --toggle screenshot" "")))
       ;; Always-visible utility button
-      (label :class "utility-button" 
-             :text "󱁤"))))
+      (button :class "utility-button" 
+              :onclick "atc" 
+              "󱁤"))))
 

@@ -37,4 +37,5 @@
 
 .workspace:hover {
     background-color: #B83B5E;
+    color: @color4;
 }

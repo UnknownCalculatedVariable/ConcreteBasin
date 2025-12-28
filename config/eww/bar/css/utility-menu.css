@@ -1,14 +1,22 @@
 .utility-button {
-    	background-color: @color0;
-    	color: @foreground ;
-    	font-size: 20px;
-    	padding-bottom: 5px;
-    	padding-top: 5px;
-	border-radius: 0px;
+        background-color: @color0;
+        color: @foreground ;
+        font-size: 20px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        border-radius: 0px;
+}
+
+.utility-button:hover {
+    color: @color4;  
 }
 
 .utility-menu {
         background-color: @color0;
         color: @foreground ;
-	font-size: 20px;
+        font-size: 20px;
+}
+
+.utility-menu:hover {
+    color: @color4;
 }

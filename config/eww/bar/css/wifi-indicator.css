@@ -6,8 +6,9 @@
 
 .wifi-button {
 	background-color: @color0;
-    transition: all 0.3s ease-in-out;
-    border-radius: 0px;
+	color: @foreground;
+    	transition: all 0.3s ease-in-out;
+    	border-radius: 0px;
 }
 
 .wifi-button:hover {
