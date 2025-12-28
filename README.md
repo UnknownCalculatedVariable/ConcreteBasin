@@ -61,6 +61,7 @@ ConcreteBasin is a personalized desktop environment configuration for Linux, foc
 -   **Eww:** `~/.config/eww/`
 -   **Rofi:** `~/.config/rofi/`
 -   **Mako:** `~/.config/mako/`
+-   **Nvim:** `~/.config/nvim/`
 
 ## Scripts
 
