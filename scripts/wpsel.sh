@@ -2,7 +2,7 @@
 set -e
 
 # ==============================
-# Wallpaper Selector with swww
+# Wallpaper Selector with awww
 # ==============================
 
 # Configuration
@@ -16,7 +16,7 @@ GRID_COLS=4
 
 # Ensure dependencies
 command -v convert >/dev/null || { notify-send "ImageMagick 'convert' is not installed."; exit 1; }
-command -v swww >/dev/null || { notify-send "swww is not installed."; exit 1; }
+command -v awww >/dev/null || { notify-send "awww is not installed."; exit 1; }
 
 # Make sure thumbnail cache exists
 mkdir -p "$THUMBNAIL_DIR"
@@ -118,25 +118,13 @@ fi
 if [[ -f "$selected_wallpaper" ]]; then
     echo "$SELECTED_INDEX" > "$CACHE_FILE"
 
-    # Random animation
-    ANIMATIONS=("simple" "fade" "wipe" "wave" "outer" "grow" "any")
+    # Random animation for awww
+    ANIMATIONS=("fade" "slide" "zoom" "pixel" "wipe")
     RANDOM_ANIM=${ANIMATIONS[$RANDOM % ${#ANIMATIONS[@]}]}
 
-    TRANSITION_OPTS=(
-        --transition-type "$RANDOM_ANIM"
-        --transition-fps 60
-        --transition-duration 0.8
-        --transition-bezier 0.4,0.2,0.0,1.0
-    )
-
-    # Start daemon if needed
-    if ! pgrep -x "swww-daemon" >/dev/null; then
-        swww init
-        sleep 0.1
-    fi
-
+    # awww doesn't require a daemon - it's stateless
     # Apply wallpaper with random animation
-    swww img "$selected_wallpaper" "${TRANSITION_OPTS[@]}"
+    awww img "$selected_wallpaper" --transition-type random 
 
     # Notify
     notify-send -t 1000 "Wallpaper Set" "Animation: $RANDOM_ANIM → $(basename "$selected_wallpaper")"
@@ -160,4 +148,3 @@ if [[ -f "$selected_wallpaper" ]]; then
         eww open-many music music-progress
     fi
 fi
-
